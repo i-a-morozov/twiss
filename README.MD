@@ -16,7 +16,7 @@ $ python -m pip install .
 
 # Twiss
 
-Compute tunes, nornalization matrix and twiss matrices.
+Compute tunes, normalization matrix and twiss matrices.
 
 ```python
 >>> from math import pi
