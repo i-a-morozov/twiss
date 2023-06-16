@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "twiss"
-version = "0.1.0"
+version = "0.1.1"
 authors = [{name = "Ivan Morozov", email = "i.a.morozov@inp.nsk.su"}]
 description = "Differentiable Wolski twiss matrices computation for arbitrary dimension stable symplectic matrices"
 readme = "README.MD"
