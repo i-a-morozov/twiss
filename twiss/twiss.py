@@ -21,7 +21,7 @@ def twiss(m:Tensor, *,
     """
     Compute coupled Wolski twiss parameters for a given one-turn input matrix
     
-    Returns fractionaltunes, normalization matrix (standard gauge) and Wolski twiss matrices
+    Returns fractional tunes, normalization matrix (standard gauge) and Wolski twiss matrices
     
     Input matrix can have arbitrary even dimension
     Input matrix stability is not checked
