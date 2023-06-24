@@ -106,32 +106,38 @@ def twiss(m:Tensor, *,
     tensor([0.0796], dtype=torch.float64)
 
     """
-    dtype = m.dtype
-    device = m.device
+    with torch.no_grad():
 
-    rdtype = torch.tensor(1, dtype=dtype).abs().dtype
-    cdtype = (1j*torch.tensor(1, dtype=dtype)).dtype
+        dtype = m.dtype
+        device = m.device
 
-    d = len(m) // 2
+        rdtype = torch.tensor(1, dtype=dtype).abs().dtype
+        cdtype = (1j*torch.tensor(1, dtype=dtype)).dtype
 
-    b_p = torch.tensor([[1, 0], [0, 1]], dtype=rdtype, device=device)
-    b_s = torch.tensor([[0, 1], [-1, 0]], dtype=rdtype, device=device)
-    b_c = 0.5**0.5*torch.tensor([[1, +1j], [1, -1j]], dtype=cdtype, device=device)
+        d = len(m) // 2
 
-    m_p = torch.stack([torch.block_diag(*[b_p*(i == j) for i in range(d)]) for j in range(d)])
-    m_s = torch.block_diag(*[b_s for _ in range(d)])
-    m_c = torch.block_diag(*[b_c for _ in range(d)])
+        b_p = torch.tensor([[1, 0], [0, 1]], dtype=rdtype, device=device)
+        b_s = torch.tensor([[0, 1], [-1, 0]], dtype=rdtype, device=device)
+        b_c = 0.5**0.5*torch.tensor([[1, +1j], [1, -1j]], dtype=cdtype, device=device)
+
+        m_p = torch.stack([torch.block_diag(*[b_p*(i == j) for i in range(d)]) for j in range(d)])
+        m_s = torch.block_diag(*[b_s for _ in range(d)])
+        m_c = torch.block_diag(*[b_c for _ in range(d)])
 
     l, v = torch.linalg.eig(m)
     l, v = l.reshape(d, -1), v.T.reshape(d, -1, 2*d)
-    for i, (v1, v2) in enumerate(v):
-        v[i] /= (-1j*(v1 @ m_s.to(cdtype) @ v2)).abs().sqrt()
 
+    u = torch.zeros_like(v)
+    for i, (v1, v2) in enumerate(v):
+        u[i] = v[i]/(-1j*(v1 @ m_s.to(cdtype) @ v2)).abs().sqrt()
+
+    k = torch.zeros_like(l)
+    v = torch.zeros_like(u)
     for i in range(d):
         o = torch.clone(l[i].log()).imag.argsort()
-        l[i], v[i] = l[i, o], v[i, o]
+        k[i], v[i] = l[i, o], u[i, o]
 
-    t = 1.0 - l.log().abs().mean(-1)/(2.0*pi)
+    t = 1.0 - k.log().abs().mean(-1)/(2.0*pi)
 
     n = torch.cat([*v]).H
     n = (n @ m_c).real
@@ -139,6 +145,7 @@ def twiss(m:Tensor, *,
 
     o = torch.stack([w[i].diag().argmax() for i in range(d)]).argsort()
     t, v = t[o], v[o]
+
     n = torch.cat([*v]).H
     n = (n @ m_c).real
 
