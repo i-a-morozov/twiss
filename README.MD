@@ -1,7 +1,6 @@
 [![Documentation Status](https://readthedocs.org/projects/twiss/badge/?version=latest)](https://twiss.readthedocs.io/en/latest/?badge=latest)
 
 # twiss, 2022-2023
-## i.a.morozov@inp.nsk.su
 
 Coupled twiss parameters (Wolski twiss matrices) computation for arbitrary even dimension.
 
