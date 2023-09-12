@@ -1,5 +1,3 @@
-[![Docs](https://github.com/i-a-morozov/twiss/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/i-a-morozov/twiss/actions/workflows/pages/pages-build-deployment)
-
 # twiss, 2022-2023
 
 Coupled twiss parameters (Wolski twiss matrices) computation for arbitrary even dimension.
