@@ -1,5 +1,3 @@
-[![Documentation Status](https://readthedocs.org/projects/twiss/badge/?version=latest)](https://twiss.readthedocs.io/en/latest/?badge=latest)
-
 # twiss, 2022-2023
 
 Coupled twiss parameters (Wolski twiss matrices) computation for arbitrary even dimension.
@@ -10,6 +8,13 @@ Coupled twiss parameters (Wolski twiss matrices) computation for arbitrary even 
 $ git clone https://github.com/i-a-morozov/twiss.git
 $ cd twiss
 $ python -m pip install .
+
+```
+
+or 
+
+```
+$ pip install twiss -U
 
 ```
 
