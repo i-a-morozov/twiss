@@ -26,6 +26,7 @@ jobs:
           pip install -r docs/requirements.txt
       - name: Sphinx build
         run: |
+          sudo apt install pandoc
           sphinx-build docs/source docs/build
       - name: Deploy docs
         uses: peaceiris/actions-gh-pages@v3

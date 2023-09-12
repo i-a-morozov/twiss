@@ -3,13 +3,9 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 import os
 import sys
-from os.path import dirname
 
-SOURCE = os.path.dirname(os.path.realpath(__file__))
-sys.path.insert(0, SOURCE)
 
-ROOT = dirname(dirname(SOURCE))
-sys.path.insert(0, ROOT)
+sys.path.insert(0, os.path.abspath('../..'))
 
 
 # Configuration file for the Sphinx documentation builder.
@@ -17,7 +13,6 @@ sys.path.insert(0, ROOT)
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-# source_suffix = ['.rst', '.md']
 source_suffix = '.rst'
 
 # -- Project information -----------------------------------------------------
@@ -56,6 +51,7 @@ html_static_path = []
 
 # -- Autodoc Configuration ---------------------------------------------------
 
+
 # Add here all modules to be mocked up. When the dependencies are not met
 # at building time. Here used to have PyQT mocked.
-autodoc_mock_imports = ['PyQt5', 'PyQt5.QtGui', 'PyQt5.QtCore', 'PyQt5.QtWidgets', "matplotlib.backends.backend_qt5agg"]
+autodoc_mock_imports = ['torch', 'PyQt5', 'PyQt5.QtGui', 'PyQt5.QtCore', 'PyQt5.QtWidgets', "matplotlib.backends.backend_qt5agg"]
