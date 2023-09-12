@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; twiss  documentation</title>
+  <title>Normal &mdash; twiss  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="convert.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="twiss.html" /> 
+    <link rel="next" title="Convert" href="convert.html" />
+    <link rel="prev" title="Twiss" href="twiss.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,9 +55,44 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples/twiss.html#Example-08:-Matching-(autograd-&amp;-taylor-model)">Example-08: Matching (autograd &amp; taylor model)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="math.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="math.html#twiss.math.mod"><code class="docutils literal notranslate"><span class="pre">mod()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html">Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html#twiss.matrix.is_symplectic"><code class="docutils literal notranslate"><span class="pre">is_symplectic()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html#twiss.matrix.projection"><code class="docutils literal notranslate"><span class="pre">projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html#twiss.matrix.rotation"><code class="docutils literal notranslate"><span class="pre">rotation()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html#twiss.matrix.rotation_block"><code class="docutils literal notranslate"><span class="pre">rotation_block()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html#twiss.matrix.symplectic_block"><code class="docutils literal notranslate"><span class="pre">symplectic_block()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html#twiss.matrix.symplectic_identity"><code class="docutils literal notranslate"><span class="pre">symplectic_identity()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html#twiss.matrix.symplectic_inverse"><code class="docutils literal notranslate"><span class="pre">symplectic_inverse()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix.html#twiss.matrix.symplectify"><code class="docutils literal notranslate"><span class="pre">symplectify()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="twiss.html">Twiss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twiss.html#twiss.twiss.advance"><code class="docutils literal notranslate"><span class="pre">advance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="twiss.html#twiss.twiss.is_stable"><code class="docutils literal notranslate"><span class="pre">is_stable()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="twiss.html#twiss.twiss.propagate"><code class="docutils literal notranslate"><span class="pre">propagate()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="twiss.html#twiss.twiss.twiss"><code class="docutils literal notranslate"><span class="pre">twiss()</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Normal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.normal.cs_normal"><code class="docutils literal notranslate"><span class="pre">cs_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.normal.lb_normal"><code class="docutils literal notranslate"><span class="pre">lb_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.normal.normal_to_wolski"><code class="docutils literal notranslate"><span class="pre">normal_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.normal.parametric"><code class="docutils literal notranslate"><span class="pre">parametric()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.normal.wolski_to_normal"><code class="docutils literal notranslate"><span class="pre">wolski_to_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html#twiss.convert.cs_to_wolski"><code class="docutils literal notranslate"><span class="pre">cs_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html#twiss.convert.lb_to_wolski"><code class="docutils literal notranslate"><span class="pre">lb_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html#twiss.convert.wolski_to_cs"><code class="docutils literal notranslate"><span class="pre">wolski_to_cs()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html#twiss.convert.wolski_to_lb"><code class="docutils literal notranslate"><span class="pre">wolski_to_lb()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariant.html">Invariant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariant.html#twiss.invariant.cs_invariant"><code class="docutils literal notranslate"><span class="pre">cs_invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariant.html#twiss.invariant.invariant"><code class="docutils literal notranslate"><span class="pre">invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariant.html#twiss.invariant.lb_invariant"><code class="docutils literal notranslate"><span class="pre">lb_invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html">Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.cs_transport"><code class="docutils literal notranslate"><span class="pre">cs_transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.lb_transport"><code class="docutils literal notranslate"><span class="pre">lb_transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.momenta"><code class="docutils literal notranslate"><span class="pre">momenta()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.transport"><code class="docutils literal notranslate"><span class="pre">transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.wolski_transport"><code class="docutils literal notranslate"><span class="pre">wolski_transport()</span></code></a></li>
 </ul>
 
         </div>
@@ -74,7 +109,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="breadcrumb-item active">Normal</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/modules/normal.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -84,13 +119,171 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
+  <section id="normal">
+<span id="module-twiss.normal"></span><h1>Normal<a class="headerlink" href="#normal" title="Link to this heading"></a></h1>
+<p>Normalization matrix utils</p>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.normal.cs_normal">
+<span class="sig-prename descclassname"><span class="pre">twiss.normal.</span></span><span class="sig-name descname"><span class="pre">cs_normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/normal.html#cs_normal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.normal.cs_normal" title="Link to this definition"></a></dt>
+<dd><p>Generate Courant-Snyder normalization matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pars</strong> (<em>Tensor</em>) – Courant-Snyder twiss parameters
+ax, bx, ay, by</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>normalization matrix N, M = N R N^-1</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[ax, bx, ay, by] are CS twiss parameters</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">twiss.matrix</span> <span class="kn">import</span> <span class="n">is_symplectic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pars</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_symplectic</span><span class="p">(</span><span class="n">cs_normal</span><span class="p">(</span><span class="n">pars</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.normal.lb_normal">
+<span class="sig-prename descclassname"><span class="pre">twiss.normal.</span></span><span class="sig-name descname"><span class="pre">lb_normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/normal.html#lb_normal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.normal.lb_normal" title="Link to this definition"></a></dt>
+<dd><p>Generate Lebedev-Bogacz normalization matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pars</strong> (<em>Tensor</em>) – Lebedev-Bogacz twiss parameters
+a1x, b1x, a2x, b2x, a1y, b1y, a2y, b2y, u, v1, v2</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>normalization matrix N, M = N R N^-1</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>[a1x, b1x, a2x, b2x, a1y, b1y, a2y, b2y, u, v1, v2] are LB twiss parameters
+[a1x, b1x, a2y, b2y] are ‘in-plane’ twiss parameters</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">twiss.matrix</span> <span class="kn">import</span> <span class="n">is_symplectic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pars</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_symplectic</span><span class="p">(</span><span class="n">lb_normal</span><span class="p">(</span><span class="n">pars</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.normal.normal_to_wolski">
+<span class="sig-prename descclassname"><span class="pre">twiss.normal.</span></span><span class="sig-name descname"><span class="pre">normal_to_wolski</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/normal.html#normal_to_wolski"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.normal.normal_to_wolski" title="Link to this definition"></a></dt>
+<dd><p>Compute Wolski twiss matrices for a given normalization matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>torch.Tensor</em><em>, </em><em>even-dimension</em><em>, </em><em>symplectic</em>) – normalization matrix</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">twiss.matrix</span> <span class="kn">import</span>  <span class="n">rotation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">rotation</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.88</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">twiss</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">normal_to_wolski</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">w</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.normal.parametric">
+<span class="sig-prename descclassname"><span class="pre">twiss.normal.</span></span><span class="sig-name descname"><span class="pre">parametric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/normal.html#parametric"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.normal.parametric" title="Link to this definition"></a></dt>
+<dd><p>Generate ‘parametric’ 4x4 normalization matrix for given free elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pars</strong> (<em>Tensor</em>) – free matrix elements
+n11, n33, n21, n43, n13, n31, n14, n41</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>normalization matrix N
+M = N R N^-1</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tensor</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Elements denoted with x are computed for given free elements using symplectic condition
+For n11 &gt; 0 &amp; n33 &gt; 0, all matrix elements are not singular in uncoupled limit</p>
+<blockquote>
+<div><p>n11   0 n13 n14
+n21   x   x   x
+n31   x n33   0
+n41   x n43   x</p>
+</div></blockquote>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">twiss.matrix</span> <span class="kn">import</span> <span class="n">is_symplectic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pars</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_symplectic</span><span class="p">(</span><span class="n">parametric</span><span class="p">(</span><span class="n">pars</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.normal.wolski_to_normal">
+<span class="sig-prename descclassname"><span class="pre">twiss.normal.</span></span><span class="sig-name descname"><span class="pre">wolski_to_normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/normal.html#wolski_to_normal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.normal.wolski_to_normal" title="Link to this definition"></a></dt>
+<dd><p>Compute normalization matrix for given Wolski twiss matrices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>w</strong> (<em>Tensor</em>) – Wolski twiss matrices</p></li>
+<li><p><strong>epsilon</strong> (<em>float</em><em>, </em><em>optional</em><em>, </em><em>default=1.0E-12</em>) – tolerance epsilon</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Normalization matrix is computed using fake one-turn matrix with fixed tunes</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">twiss.matrix</span> <span class="kn">import</span>  <span class="n">rotation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">rotation</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.88</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">twiss</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">wolski_to_normal</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="n">n</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="twiss.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="convert.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="twiss.html" class="btn btn-neutral float-left" title="Twiss" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="convert.html" class="btn btn-neutral float-right" title="Convert" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

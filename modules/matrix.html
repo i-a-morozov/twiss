@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; twiss  documentation</title>
+  <title>Matrix &mdash; twiss  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="twiss.html" />
+    <link rel="next" title="Twiss" href="twiss.html" />
     <link rel="prev" title="Math" href="math.html" /> 
 </head>
 
@@ -55,9 +55,44 @@
 <li class="toctree-l1"><a class="reference internal" href="../examples/twiss.html#Example-08:-Matching-(autograd-&amp;-taylor-model)">Example-08: Matching (autograd &amp; taylor model)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="math.html">Math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="math.html#twiss.math.mod"><code class="docutils literal notranslate"><span class="pre">mod()</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.matrix.is_symplectic"><code class="docutils literal notranslate"><span class="pre">is_symplectic()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.matrix.projection"><code class="docutils literal notranslate"><span class="pre">projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.matrix.rotation"><code class="docutils literal notranslate"><span class="pre">rotation()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.matrix.rotation_block"><code class="docutils literal notranslate"><span class="pre">rotation_block()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.matrix.symplectic_block"><code class="docutils literal notranslate"><span class="pre">symplectic_block()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.matrix.symplectic_identity"><code class="docutils literal notranslate"><span class="pre">symplectic_identity()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.matrix.symplectic_inverse"><code class="docutils literal notranslate"><span class="pre">symplectic_inverse()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.matrix.symplectify"><code class="docutils literal notranslate"><span class="pre">symplectify()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="twiss.html">Twiss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="twiss.html#twiss.twiss.advance"><code class="docutils literal notranslate"><span class="pre">advance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="twiss.html#twiss.twiss.is_stable"><code class="docutils literal notranslate"><span class="pre">is_stable()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="twiss.html#twiss.twiss.propagate"><code class="docutils literal notranslate"><span class="pre">propagate()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="twiss.html#twiss.twiss.twiss"><code class="docutils literal notranslate"><span class="pre">twiss()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="normal.html">Normal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normal.html#twiss.normal.cs_normal"><code class="docutils literal notranslate"><span class="pre">cs_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="normal.html#twiss.normal.lb_normal"><code class="docutils literal notranslate"><span class="pre">lb_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="normal.html#twiss.normal.normal_to_wolski"><code class="docutils literal notranslate"><span class="pre">normal_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="normal.html#twiss.normal.parametric"><code class="docutils literal notranslate"><span class="pre">parametric()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="normal.html#twiss.normal.wolski_to_normal"><code class="docutils literal notranslate"><span class="pre">wolski_to_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html#twiss.convert.cs_to_wolski"><code class="docutils literal notranslate"><span class="pre">cs_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html#twiss.convert.lb_to_wolski"><code class="docutils literal notranslate"><span class="pre">lb_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html#twiss.convert.wolski_to_cs"><code class="docutils literal notranslate"><span class="pre">wolski_to_cs()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html#twiss.convert.wolski_to_lb"><code class="docutils literal notranslate"><span class="pre">wolski_to_lb()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariant.html">Invariant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariant.html#twiss.invariant.cs_invariant"><code class="docutils literal notranslate"><span class="pre">cs_invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariant.html#twiss.invariant.invariant"><code class="docutils literal notranslate"><span class="pre">invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="invariant.html#twiss.invariant.lb_invariant"><code class="docutils literal notranslate"><span class="pre">lb_invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html">Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.cs_transport"><code class="docutils literal notranslate"><span class="pre">cs_transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.lb_transport"><code class="docutils literal notranslate"><span class="pre">lb_transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.momenta"><code class="docutils literal notranslate"><span class="pre">momenta()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.transport"><code class="docutils literal notranslate"><span class="pre">transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.wolski_transport"><code class="docutils literal notranslate"><span class="pre">wolski_transport()</span></code></a></li>
 </ul>
 
         </div>
@@ -74,7 +109,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="breadcrumb-item active">Matrix</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/modules/matrix.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -84,13 +119,224 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
+  <section id="matrix">
+<span id="module-twiss.matrix"></span><h1>Matrix<a class="headerlink" href="#matrix" title="Link to this heading"></a></h1>
+<p>Matrix utils</p>
+</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.matrix.is_symplectic">
+<span class="sig-prename descclassname"><span class="pre">twiss.matrix.</span></span><span class="sig-name descname"><span class="pre">is_symplectic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epsilon</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/twiss/matrix.html#is_symplectic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.matrix.is_symplectic" title="Link to this definition"></a></dt>
+<dd><p>Test symplectic condition for a given input matrix elementwise</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<em>Tensor</em>) – input matrix</p></li>
+<li><p><strong>epsilon</strong> (<em>float</em>) – tolerance epsilon</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">is_symplectic</span><span class="p">(</span><span class="n">rotation_block</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.matrix.projection">
+<span class="sig-prename descclassname"><span class="pre">twiss.matrix.</span></span><span class="sig-name descname"><span class="pre">projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">torch.device</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/matrix.html#projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.matrix.projection" title="Link to this definition"></a></dt>
+<dd><p>Plane projection matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> (<em>int</em>) – total number of planes</p></li>
+<li><p><strong>p</strong> (<em>int</em>) – plane id (1, 2, …, n)</p></li>
+<li><p><strong>dtype</strong> (<em>torch.dtype</em><em>, </em><em>default=torch.float64</em>) – data type</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em><em>, </em><em>torch.device=torch.device</em><em>(</em><em>'cpu'</em><em>)</em>) – data device</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">projection</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">tensor([[1., 0., 0., 0.],</span>
+<span class="go">        [0., 1., 0., 0.],</span>
+<span class="go">        [0., 0., 0., 0.],</span>
+<span class="go">        [0., 0., 0., 0.]], dtype=torch.float64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">projection</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">tensor([[0., 0., 0., 0.],</span>
+<span class="go">        [0., 0., 0., 0.],</span>
+<span class="go">        [0., 0., 1., 0.],</span>
+<span class="go">        [0., 0., 0., 1.]], dtype=torch.float64)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.matrix.rotation">
+<span class="sig-prename descclassname"><span class="pre">twiss.matrix.</span></span><span class="sig-name descname"><span class="pre">rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">angles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/matrix.html#rotation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.matrix.rotation" title="Link to this definition"></a></dt>
+<dd><p>Generate rotation matrix using given angles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>angles</strong> (<em>tuple</em><em>[</em><em>Tensor</em><em>, </em><em>...</em><em>]</em>) – rotation angles</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Block rotation is [[cos(angle), sin(angle)], [-sin(angle), cos(angle)]]</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rotation</span><span class="p">(</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">pi</span><span class="p">,</span> <span class="o">-</span><span class="n">pi</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+<span class="go">tensor([[-1.0000e+00,  1.2246e-16,  0.0000e+00,  0.0000e+00],</span>
+<span class="go">        [-1.2246e-16, -1.0000e+00,  0.0000e+00,  0.0000e+00],</span>
+<span class="go">        [ 0.0000e+00,  0.0000e+00, -1.0000e+00, -1.2246e-16],</span>
+<span class="go">        [ 0.0000e+00,  0.0000e+00,  1.2246e-16, -1.0000e+00]],</span>
+<span class="go">       dtype=torch.float64)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.matrix.rotation_block">
+<span class="sig-prename descclassname"><span class="pre">twiss.matrix.</span></span><span class="sig-name descname"><span class="pre">rotation_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/matrix.html#rotation_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.matrix.rotation_block" title="Link to this definition"></a></dt>
+<dd><p>Generate 2D rotation block [[cos(angle), sin(angle)], [-sin(angle), cos(angle)]] matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>angle</strong> (<em>Tensor</em>) – rotation angle</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rotation_block</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+<span class="go">tensor([[-1.0000e+00,  1.2246e-16],</span>
+<span class="go">        [-1.2246e-16, -1.0000e+00]], dtype=torch.float64)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.matrix.symplectic_block">
+<span class="sig-prename descclassname"><span class="pre">twiss.matrix.</span></span><span class="sig-name descname"><span class="pre">symplectic_block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.dtype</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">torch.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.device</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">torch.device</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/matrix.html#symplectic_block"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.matrix.symplectic_block" title="Link to this definition"></a></dt>
+<dd><p>Generate 2D symplectic block [[0, 1], [-1, 0]] matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dtype</strong> (<em>torch.dtype</em><em>, </em><em>default=torch.float64</em>) – output type</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em><em>, </em><em>torch.device=torch.device</em><em>(</em><em>'cpu'</em><em>)</em>) – output device</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">symplectic_block</span><span class="p">()</span>
+<span class="go">tensor([[ 0.,  1.],</span>
+<span class="go">        [-1.,  0.]], dtype=torch.float64)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.matrix.symplectic_identity">
+<span class="sig-prename descclassname"><span class="pre">twiss.matrix.</span></span><span class="sig-name descname"><span class="pre">symplectic_identity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.dtype</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">torch.float64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.device</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">torch.device</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/matrix.html#symplectic_identity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.matrix.symplectic_identity" title="Link to this definition"></a></dt>
+<dd><p>Generate symplectic identity matrix for a given (configuration space) dimension</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> (<em>int</em><em>, </em><em>positive</em>) – configuration space dimension</p></li>
+<li><p><strong>dtype</strong> (<em>torch.dtype</em><em>, </em><em>default=torch.float64</em>) – data type</p></li>
+<li><p><strong>device</strong> (<em>torch.device</em><em>, </em><em>torch.device=torch.device</em><em>(</em><em>'cpu'</em><em>)</em>) – data device</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Symplectic block is [[0, 1], [-1, 0]], i.e. canonical variables are grouped by pairs</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">symplectic_identity</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">tensor([[ 0.,  1.],</span>
+<span class="go">        [-1.,  0.]], dtype=torch.float64)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">symplectic_identity</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">tensor([[ 0.,  1.,  0.,  0.],</span>
+<span class="go">        [-1.,  0.,  0.,  0.],</span>
+<span class="go">        [ 0.,  0.,  0.,  1.],</span>
+<span class="go">        [ 0.,  0., -1.,  0.]], dtype=torch.float64)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.matrix.symplectic_inverse">
+<span class="sig-prename descclassname"><span class="pre">twiss.matrix.</span></span><span class="sig-name descname"><span class="pre">symplectic_inverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/matrix.html#symplectic_inverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.matrix.symplectic_inverse" title="Link to this definition"></a></dt>
+<dd><p>Compute inverse of a given input symplectic matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>Tensor</em><em>, </em><em>even-dimension</em><em>, </em><em>symplectic</em>) – input matrix</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">symplectic_inverse</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+<span class="go">tensor([[ 1.0000, -0.1000],</span>
+<span class="go">        [ 0.0000,  1.0000]], dtype=torch.float64)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="twiss.matrix.symplectify">
+<span class="sig-prename descclassname"><span class="pre">twiss.matrix.</span></span><span class="sig-name descname"><span class="pre">symplectify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="reference internal" href="../_modules/twiss/matrix.html#symplectify"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.matrix.symplectify" title="Link to this definition"></a></dt>
+<dd><p>Perform symplectification of a given input matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>m</strong> (<em>Tensor</em><em>, </em><em>even-dimension</em>) – input matrix to symplectify</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tensor</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">symplectify</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+<span class="go">tensor([[1.0050, 0.1005],</span>
+<span class="go">        [0.0000, 0.9950]], dtype=torch.float64)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="math.html" class="btn btn-neutral float-left" title="Math" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="twiss.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="twiss.html" class="btn btn-neutral float-right" title="Twiss" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

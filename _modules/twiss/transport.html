@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>twiss.transport &mdash; twiss  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            twiss
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html">Example-01: Coupled twiss parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-02:-Tune-derivatives">Example-02: Tune derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-03:-Twiss-derivatives">Example-03: Twiss derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-04:-Phase-advance-derivatives">Example-04: Phase advance derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-05:-Tune-uncertainty-from-systematic-errors">Example-05: Tune uncertainty from systematic errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-06:-Matching-(composable)">Example-06: Matching (composable)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-07:-Matching-(autograd)">Example-07: Matching (autograd)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-08:-Matching-(autograd-&amp;-taylor-model)">Example-08: Matching (autograd &amp; taylor model)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/math.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/math.html#twiss.math.mod"><code class="docutils literal notranslate"><span class="pre">mod()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html">Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.is_symplectic"><code class="docutils literal notranslate"><span class="pre">is_symplectic()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.projection"><code class="docutils literal notranslate"><span class="pre">projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.rotation"><code class="docutils literal notranslate"><span class="pre">rotation()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.rotation_block"><code class="docutils literal notranslate"><span class="pre">rotation_block()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectic_block"><code class="docutils literal notranslate"><span class="pre">symplectic_block()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectic_identity"><code class="docutils literal notranslate"><span class="pre">symplectic_identity()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectic_inverse"><code class="docutils literal notranslate"><span class="pre">symplectic_inverse()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectify"><code class="docutils literal notranslate"><span class="pre">symplectify()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html">Twiss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.advance"><code class="docutils literal notranslate"><span class="pre">advance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.is_stable"><code class="docutils literal notranslate"><span class="pre">is_stable()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.propagate"><code class="docutils literal notranslate"><span class="pre">propagate()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.twiss"><code class="docutils literal notranslate"><span class="pre">twiss()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html">Normal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.cs_normal"><code class="docutils literal notranslate"><span class="pre">cs_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.lb_normal"><code class="docutils literal notranslate"><span class="pre">lb_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.normal_to_wolski"><code class="docutils literal notranslate"><span class="pre">normal_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.parametric"><code class="docutils literal notranslate"><span class="pre">parametric()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.wolski_to_normal"><code class="docutils literal notranslate"><span class="pre">wolski_to_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/convert.html">Convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/convert.html#twiss.convert.cs_to_wolski"><code class="docutils literal notranslate"><span class="pre">cs_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/convert.html#twiss.convert.lb_to_wolski"><code class="docutils literal notranslate"><span class="pre">lb_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/convert.html#twiss.convert.wolski_to_cs"><code class="docutils literal notranslate"><span class="pre">wolski_to_cs()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/convert.html#twiss.convert.wolski_to_lb"><code class="docutils literal notranslate"><span class="pre">wolski_to_lb()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/invariant.html">Invariant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/invariant.html#twiss.invariant.cs_invariant"><code class="docutils literal notranslate"><span class="pre">cs_invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/invariant.html#twiss.invariant.invariant"><code class="docutils literal notranslate"><span class="pre">invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/invariant.html#twiss.invariant.lb_invariant"><code class="docutils literal notranslate"><span class="pre">lb_invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html">Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.cs_transport"><code class="docutils literal notranslate"><span class="pre">cs_transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.lb_transport"><code class="docutils literal notranslate"><span class="pre">lb_transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.momenta"><code class="docutils literal notranslate"><span class="pre">momenta()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.transport"><code class="docutils literal notranslate"><span class="pre">transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.wolski_transport"><code class="docutils literal notranslate"><span class="pre">wolski_transport()</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">twiss</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">twiss.transport</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for twiss.transport</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Transport</span>
+<span class="sd">---------</span>
+
+<span class="sd">Transport matrix utils</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
+
+<span class="kn">from</span> <span class="nn">.matrix</span> <span class="kn">import</span> <span class="n">rotation</span>
+<span class="kn">from</span> <span class="nn">.normal</span> <span class="kn">import</span> <span class="n">wolski_to_normal</span>
+<span class="kn">from</span> <span class="nn">.normal</span> <span class="kn">import</span> <span class="n">lb_normal</span>
+<span class="kn">from</span> <span class="nn">.normal</span> <span class="kn">import</span> <span class="n">cs_normal</span>
+
+<div class="viewcode-block" id="transport">
+<a class="viewcode-back" href="../../modules/transport.html#twiss.transport.transport">[docs]</a>
+<span class="k">def</span> <span class="nf">transport</span><span class="p">(</span><span class="n">n1</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+              <span class="n">n2</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+              <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate transport matrix using normalization matrices and phase advances between locations</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n1: Tensor, even-dimension, symplectic</span>
+<span class="sd">        normalization matrix at the 1st location</span>
+<span class="sd">    n2: Tensor, even-dimension, symplectic</span>
+<span class="sd">        normalization matrix at the 2nd location</span>
+<span class="sd">    *mu12: tuple[Tensor, ...]</span>
+<span class="sd">        phase advances between locations</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tensor</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from math import pi</span>
+<span class="sd">    &gt;&gt;&gt; import torch</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.twiss import twiss</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.twiss import advance</span>
+<span class="sd">    &gt;&gt;&gt; t = torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; m = rotation(2*pi*torch.tensor(0.12, dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; _, n1, w1 = twiss(m @ t)</span>
+<span class="sd">    &gt;&gt;&gt; mu12, n2 = advance(n1, t)</span>
+<span class="sd">    &gt;&gt;&gt; transport(n1, n2, *mu12)</span>
+<span class="sd">    tensor([[1.0000, 0.1000],</span>
+<span class="sd">            [0.0000, 1.0000]], dtype=torch.float64)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">n2</span> <span class="o">@</span> <span class="n">rotation</span><span class="p">(</span><span class="o">*</span><span class="n">mu12</span><span class="p">)</span> <span class="o">@</span> <span class="n">n1</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="wolski_transport">
+<a class="viewcode-back" href="../../modules/transport.html#twiss.transport.wolski_transport">[docs]</a>
+<span class="k">def</span> <span class="nf">wolski_transport</span><span class="p">(</span><span class="n">pars1</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+                     <span class="n">pars2</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+                     <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate transport matrix using Wolski matrices and phase advances between locations</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pars1 : Tensor</span>
+<span class="sd">        Wolski matrices at the 1st location</span>
+<span class="sd">    pars2 : Tensor</span>
+<span class="sd">        Wolski matrices at the 2nd location</span>
+<span class="sd">    *mu12: tuple[Tensor, ...]</span>
+<span class="sd">        phase advances between locations</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tensor</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from math import pi</span>
+<span class="sd">    &gt;&gt;&gt; import torch</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.twiss import twiss</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.twiss import propagate</span>
+<span class="sd">    &gt;&gt;&gt; t = torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; m = rotation(2*pi*torch.tensor(0.12, dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; _, n1, w1 = twiss(m @ t)</span>
+<span class="sd">    &gt;&gt;&gt; mu12, n2 = advance(n1, t)</span>
+<span class="sd">    &gt;&gt;&gt; w2 = propagate(w1, t)</span>
+<span class="sd">    &gt;&gt;&gt; wolski_transport(w1, w2, *mu12)</span>
+<span class="sd">    tensor([[1.0000, 0.1000],</span>
+<span class="sd">            [0.0000, 1.0000]], dtype=torch.float64)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n1</span> <span class="o">=</span> <span class="n">wolski_to_normal</span><span class="p">(</span><span class="n">pars1</span><span class="p">)</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="n">wolski_to_normal</span><span class="p">(</span><span class="n">pars2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">transport</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="o">*</span><span class="n">mu12</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="lb_transport">
+<a class="viewcode-back" href="../../modules/transport.html#twiss.transport.lb_transport">[docs]</a>
+<span class="k">def</span> <span class="nf">lb_transport</span><span class="p">(</span><span class="n">pars1</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+                 <span class="n">pars2</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+                 <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate transport matrix using LB twiss data between given locations</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pars1: Tensor</span>
+<span class="sd">        twiss parameters at the 1st location</span>
+<span class="sd">    pars2: Tensor</span>
+<span class="sd">        twiss parameters at the 2nd location</span>
+<span class="sd">    *mu12: tuple[Tensor, ...]</span>
+<span class="sd">        phase advances between locations</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tensor</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from math import pi</span>
+<span class="sd">    &gt;&gt;&gt; import torch</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.twiss import twiss</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.twiss import advance</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.normal import normal_to_wolski</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.convert import wolski_to_lb</span>
+<span class="sd">    &gt;&gt;&gt; t = torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; t = torch.block_diag(t, t)</span>
+<span class="sd">    &gt;&gt;&gt; m = rotation(*2*pi*torch.tensor([0.12, 0.31], dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; _, n1, w1 = twiss(m @ t)</span>
+<span class="sd">    &gt;&gt;&gt; mu12, n2 = advance(n1, t)</span>
+<span class="sd">    &gt;&gt;&gt; w2 = normal_to_wolski(n2)</span>
+<span class="sd">    &gt;&gt;&gt; lb_transport(*torch.func.vmap(wolski_to_lb)(torch.stack([w1, w2])), *mu12)</span>
+<span class="sd">    tensor([[1.0000e+00, 1.0000e-01, 0.0000e+00, 0.0000e+00],</span>
+<span class="sd">            [1.3878e-17, 1.0000e+00, 0.0000e+00, 0.0000e+00],</span>
+<span class="sd">            [0.0000e+00, 0.0000e+00, 1.0000e+00, 1.0000e-01],</span>
+<span class="sd">            [0.0000e+00, 0.0000e+00, 1.3878e-16, 1.0000e+00]], dtype=torch.float64)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n1</span> <span class="o">=</span> <span class="n">lb_normal</span><span class="p">(</span><span class="n">pars1</span><span class="p">)</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="n">lb_normal</span><span class="p">(</span><span class="n">pars2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">transport</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="o">*</span><span class="n">mu12</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="cs_transport">
+<a class="viewcode-back" href="../../modules/transport.html#twiss.transport.cs_transport">[docs]</a>
+<span class="k">def</span> <span class="nf">cs_transport</span><span class="p">(</span><span class="n">pars1</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+                 <span class="n">pars2</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+                 <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate transport matrix using CS twiss data between given locations</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pars1: Tensor</span>
+<span class="sd">        twiss parameters at the 1st location</span>
+<span class="sd">    pars2: Tensor</span>
+<span class="sd">        twiss parameters at the 2nd location</span>
+<span class="sd">    *mu12: tuple[Tensor, ...]</span>
+<span class="sd">        phase advances between locations</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tensor</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from math import pi</span>
+<span class="sd">    &gt;&gt;&gt; import torch</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.twiss import twiss</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.twiss import advance</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.normal import normal_to_wolski</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.convert import wolski_to_cs</span>
+<span class="sd">    &gt;&gt;&gt; t = torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; t = torch.block_diag(t, t)</span>
+<span class="sd">    &gt;&gt;&gt; m = rotation(*2*pi*torch.tensor([0.12, 0.31], dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; _, n1, w1 = twiss(m @ t)</span>
+<span class="sd">    &gt;&gt;&gt; mu12, n2 = advance(n1, t)</span>
+<span class="sd">    &gt;&gt;&gt; w2 = normal_to_wolski(n2)</span>
+<span class="sd">    &gt;&gt;&gt; cs_transport(*torch.func.vmap(wolski_to_cs)(torch.stack([w1, w2])), *mu12)</span>
+<span class="sd">    tensor([[1.0000e+00, 1.0000e-01, 0.0000e+00, 0.0000e+00],</span>
+<span class="sd">            [2.7756e-17, 1.0000e+00, 0.0000e+00, 0.0000e+00],</span>
+<span class="sd">            [0.0000e+00, 0.0000e+00, 1.0000e+00, 1.0000e-01],</span>
+<span class="sd">            [0.0000e+00, 0.0000e+00, 1.5959e-16, 1.0000e+00]], dtype=torch.float64)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n1</span> <span class="o">=</span> <span class="n">cs_normal</span><span class="p">(</span><span class="n">pars1</span><span class="p">)</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="n">cs_normal</span><span class="p">(</span><span class="n">pars2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">transport</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="o">*</span><span class="n">mu12</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="momenta">
+<a class="viewcode-back" href="../../modules/transport.html#twiss.transport.momenta">[docs]</a>
+<span class="k">def</span> <span class="nf">momenta</span><span class="p">(</span><span class="n">matrix</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+            <span class="n">qx1</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+            <span class="n">qx2</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+            <span class="n">qy1</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+            <span class="n">qy2</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute momenta at positions 1 &amp; 2 for given transport matrix and coordinates at 1 &amp; 2</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    matrix: torch.Tensor, even-dimension, symplectic</span>
+<span class="sd">        transport matrix between</span>
+<span class="sd">    qx1, qx2, qy1, qy2: Tensor</span>
+<span class="sd">        x &amp; y coordinates at 1 &amp; 2</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple[Tensor, Tensor, Tensor, Tensor]</span>
+<span class="sd">        px1, px2, py1, py2</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from math import pi</span>
+<span class="sd">    &gt;&gt;&gt; import torch</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
+<span class="sd">    &gt;&gt;&gt; m = rotation(*2*pi*torch.tensor([0.12, 0.31], dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; x1 = torch.tensor([1.0, 0.0, 1.0, 0.0], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; x2 = m @ x1</span>
+<span class="sd">    &gt;&gt;&gt; qx1, px1, qy1, py1 = x1</span>
+<span class="sd">    &gt;&gt;&gt; qx2, px2, qy2, py2 = x2</span>
+<span class="sd">    &gt;&gt;&gt; Px1, Px2, Py1, Py2 = momenta(m, qx1, qx2, qy1, qy2)</span>
+<span class="sd">    &gt;&gt;&gt; all(torch.allclose(x, y) for x, y in zip((px1, px2, py1, py2), (Px1, Px2, Py1, Py2)))</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="p">(</span><span class="n">m11</span><span class="p">,</span> <span class="n">m12</span><span class="p">,</span> <span class="n">m13</span><span class="p">,</span> <span class="n">m14</span><span class="p">),</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">m31</span><span class="p">,</span> <span class="n">m32</span><span class="p">,</span> <span class="n">m33</span><span class="p">,</span> <span class="n">m34</span><span class="p">),</span> <span class="n">_</span>  <span class="o">=</span> <span class="n">matrix</span>
+
+    <span class="n">px1</span>  <span class="o">=</span> <span class="n">qx1</span><span class="o">*</span><span class="p">(</span><span class="n">m11</span><span class="o">*</span><span class="n">m34</span> <span class="o">-</span> <span class="n">m14</span><span class="o">*</span><span class="n">m31</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m14</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m34</span><span class="p">)</span>
+    <span class="n">px1</span> <span class="o">+=</span> <span class="n">qx2</span><span class="o">*</span><span class="n">m34</span><span class="o">/</span><span class="p">(</span><span class="n">m12</span><span class="o">*</span><span class="n">m34</span> <span class="o">-</span> <span class="n">m14</span><span class="o">*</span><span class="n">m32</span><span class="p">)</span>
+    <span class="n">px1</span> <span class="o">+=</span> <span class="n">qy1</span><span class="o">*</span><span class="p">(</span><span class="n">m13</span><span class="o">*</span><span class="n">m34</span> <span class="o">-</span> <span class="n">m14</span><span class="o">*</span><span class="n">m33</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m14</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m34</span><span class="p">)</span>
+    <span class="n">px1</span> <span class="o">+=</span> <span class="n">qy2</span><span class="o">*</span><span class="n">m14</span><span class="o">/</span><span class="p">(</span><span class="n">m14</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m34</span><span class="p">)</span>
+
+    <span class="n">py1</span>  <span class="o">=</span> <span class="n">qx1</span><span class="o">*</span><span class="p">(</span><span class="n">m11</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m31</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m12</span><span class="o">*</span><span class="n">m34</span> <span class="o">-</span> <span class="n">m14</span><span class="o">*</span><span class="n">m32</span><span class="p">)</span>
+    <span class="n">py1</span> <span class="o">+=</span> <span class="n">qx2</span><span class="o">*</span><span class="n">m32</span><span class="o">/</span><span class="p">(</span><span class="n">m14</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m34</span><span class="p">)</span>
+    <span class="n">py1</span> <span class="o">+=</span> <span class="n">qy1</span><span class="o">*</span><span class="p">(</span><span class="n">m12</span><span class="o">*</span><span class="n">m33</span> <span class="o">-</span> <span class="n">m13</span><span class="o">*</span><span class="n">m32</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m14</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m34</span><span class="p">)</span>
+    <span class="n">py1</span> <span class="o">+=</span> <span class="n">qy2</span><span class="o">*</span><span class="n">m12</span><span class="o">/</span><span class="p">(</span><span class="n">m12</span><span class="o">*</span><span class="n">m34</span> <span class="o">-</span> <span class="n">m14</span><span class="o">*</span><span class="n">m32</span><span class="p">)</span>
+
+    <span class="p">(</span><span class="n">m11</span><span class="p">,</span> <span class="n">m12</span><span class="p">,</span> <span class="n">m13</span><span class="p">,</span> <span class="n">m14</span><span class="p">),</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">m31</span><span class="p">,</span> <span class="n">m32</span><span class="p">,</span> <span class="n">m33</span><span class="p">,</span> <span class="n">m34</span><span class="p">),</span> <span class="n">_</span>  <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
+
+    <span class="n">px2</span>  <span class="o">=</span> <span class="n">qx2</span><span class="o">*</span><span class="p">(</span><span class="n">m11</span><span class="o">*</span><span class="n">m34</span> <span class="o">-</span> <span class="n">m14</span><span class="o">*</span><span class="n">m31</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m14</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m34</span><span class="p">)</span>
+    <span class="n">px2</span> <span class="o">+=</span> <span class="n">qx1</span><span class="o">*</span><span class="n">m34</span><span class="o">/</span><span class="p">(</span><span class="n">m12</span><span class="o">*</span><span class="n">m34</span> <span class="o">-</span> <span class="n">m14</span><span class="o">*</span><span class="n">m32</span><span class="p">)</span>
+    <span class="n">px2</span> <span class="o">+=</span> <span class="n">qy2</span><span class="o">*</span><span class="p">(</span><span class="n">m13</span><span class="o">*</span><span class="n">m34</span> <span class="o">-</span> <span class="n">m14</span><span class="o">*</span><span class="n">m33</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m14</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m34</span><span class="p">)</span>
+    <span class="n">px2</span> <span class="o">+=</span> <span class="n">qy1</span><span class="o">*</span><span class="n">m14</span><span class="o">/</span><span class="p">(</span><span class="n">m14</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m34</span><span class="p">)</span>
+
+    <span class="n">py2</span>  <span class="o">=</span> <span class="n">qx2</span><span class="o">*</span><span class="p">(</span><span class="n">m11</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m31</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m12</span><span class="o">*</span><span class="n">m34</span> <span class="o">-</span> <span class="n">m14</span><span class="o">*</span><span class="n">m32</span><span class="p">)</span>
+    <span class="n">py2</span> <span class="o">+=</span> <span class="n">qx1</span><span class="o">*</span><span class="n">m32</span><span class="o">/</span><span class="p">(</span><span class="n">m14</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m34</span><span class="p">)</span>
+    <span class="n">py2</span> <span class="o">+=</span> <span class="n">qy2</span><span class="o">*</span><span class="p">(</span><span class="n">m12</span><span class="o">*</span><span class="n">m33</span> <span class="o">-</span> <span class="n">m13</span><span class="o">*</span><span class="n">m32</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m14</span><span class="o">*</span><span class="n">m32</span> <span class="o">-</span> <span class="n">m12</span><span class="o">*</span><span class="n">m34</span><span class="p">)</span>
+    <span class="n">py2</span> <span class="o">+=</span> <span class="n">qy1</span><span class="o">*</span><span class="n">m12</span><span class="o">/</span><span class="p">(</span><span class="n">m12</span><span class="o">*</span><span class="n">m34</span> <span class="o">-</span> <span class="n">m14</span><span class="o">*</span><span class="n">m32</span><span class="p">)</span>
+
+    <span class="k">return</span>  <span class="n">px1</span><span class="p">,</span> <span class="n">px2</span><span class="p">,</span> <span class="n">py1</span><span class="p">,</span> <span class="n">py2</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Ivan Morozov.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

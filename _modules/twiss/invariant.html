@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>twiss.math &mdash; twiss  documentation</title>
+  <title>twiss.invariant &mdash; twiss  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -107,7 +107,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">twiss.math</li>
+      <li class="breadcrumb-item active">twiss.invariant</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -116,53 +116,148 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for twiss.math</h1><div class="highlight"><pre>
+  <h1>Source code for twiss.invariant</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Math</span>
-<span class="sd">----</span>
+<span class="sd">Invariant</span>
+<span class="sd">---------</span>
 
-<span class="sd">Math utils</span>
+<span class="sd">Invariant utils</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="mod">
-<a class="viewcode-back" href="../../modules/math.html#twiss.math.mod">[docs]</a>
-<span class="k">def</span> <span class="nf">mod</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="nb">int</span><span class="o">|</span><span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="nb">int</span><span class="o">|</span><span class="nb">float</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span><span class="nb">int</span><span class="o">|</span><span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="o">|</span><span class="nb">float</span><span class="p">:</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
+
+<span class="kn">from</span> <span class="nn">.normal</span> <span class="kn">import</span> <span class="n">lb_normal</span>
+<span class="kn">from</span> <span class="nn">.normal</span> <span class="kn">import</span> <span class="n">cs_normal</span>
+
+<div class="viewcode-block" id="invariant">
+<a class="viewcode-back" href="../../modules/invariant.html#twiss.invariant.invariant">[docs]</a>
+<span class="k">def</span> <span class="nf">invariant</span><span class="p">(</span><span class="n">normal</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+              <span class="n">orbit</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return the remainder on division of `x` by `y` with offset `z`</span>
+<span class="sd">    Compute linear invariants for a given normalization matrix and orbit</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    x: int|float</span>
-<span class="sd">        numerator</span>
-<span class="sd">    y: int|float</span>
-<span class="sd">        denomenator</span>
-<span class="sd">    z: int|float, default=0</span>
-<span class="sd">        offset</span>
+<span class="sd">    normal: Tensor, even-dimension, symplectic</span>
+<span class="sd">        normalization matrix</span>
+<span class="sd">    orbit: Tensor</span>
+<span class="sd">        orbit</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    int|float</span>
-
+<span class="sd">    Tensor</span>
+<span class="sd">        [jx, jy] for each turn</span>
+<span class="sd">    </span>
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    ``int`` is returned only if all input arguments have ``int`` type</span>
+<span class="sd">    Orbit is assumed to have the form [..., [qx_i, px_i, qy_i, py_i], ...]</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; mod(5, 2, -1)</span>
-<span class="sd">    -1</span>
-<span class="sd">    &gt;&gt;&gt; mod(5, 2, +1)</span>
-<span class="sd">    1</span>
-
 <span class="sd">    &gt;&gt;&gt; from math import pi</span>
-<span class="sd">    &gt;&gt;&gt; mod(1.5*pi, 2.0*pi, -pi)</span>
-<span class="sd">    -1.5707963267948966</span>
-<span class="sd">    &gt;&gt;&gt; mod(1.5*pi, 2.0*pi, +pi)</span>
-<span class="sd">    4.71238898038469</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.twiss import twiss</span>
+<span class="sd">    &gt;&gt;&gt; m = rotation(*2*pi*torch.tensor([0.12, 0.31], dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; t, n, w = twiss(m)</span>
+<span class="sd">    &gt;&gt;&gt; x = torch.tensor([[1, 0, 1, 0]], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(invariant(n, x), invariant(n, torch.func.vmap(lambda x: m @ x)(x)))</span>
+<span class="sd">    True</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">z</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">z</span><span class="p">)</span> <span class="o">%</span> <span class="n">y</span><span class="p">)</span></div>
+    <span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">normal</span><span class="o">.</span><span class="n">inverse</span><span class="p">(),</span> <span class="n">orbit</span><span class="p">)</span>
+
+    <span class="n">jx</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">qx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">px</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">jy</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">qy</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">py</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">jx</span><span class="p">,</span> <span class="n">jy</span><span class="p">])</span></div>
+
+
+
+<div class="viewcode-block" id="lb_invariant">
+<a class="viewcode-back" href="../../modules/invariant.html#twiss.invariant.lb_invariant">[docs]</a>
+<span class="k">def</span> <span class="nf">lb_invariant</span><span class="p">(</span><span class="n">twiss</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+                 <span class="n">orbit</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute linear invariants for a given LB twiss and orbit</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    twiss: Tensor</span>
+<span class="sd">        LB twiss</span>
+<span class="sd">        a1x, b1x, a2x, b2x, a1y, b1y, a2y, b2y, u, v1, v2</span>
+<span class="sd">    orbit: Tensor</span>
+<span class="sd">        orbit</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tensor</span>
+<span class="sd">        [jx, jy] for each turn</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Orbit is assumed to have the form [..., [qx_i, px_i, qy_i, py_i], ...]</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from math import pi</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.twiss import twiss</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.convert import wolski_to_lb</span>
+<span class="sd">    &gt;&gt;&gt; m = rotation(*2*pi*torch.tensor([0.12, 0.31], dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; t, n, w = twiss(m)</span>
+<span class="sd">    &gt;&gt;&gt; lb = wolski_to_lb(w)</span>
+<span class="sd">    &gt;&gt;&gt; x = torch.tensor([[1, 0, 1, 0]], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(lb_invariant(lb, x), lb_invariant(lb, torch.func.vmap(lambda x: m @ x)(x)))</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">normal</span> <span class="o">=</span> <span class="n">lb_normal</span><span class="p">(</span><span class="n">twiss</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">invariant</span><span class="p">(</span><span class="n">normal</span><span class="p">,</span> <span class="n">orbit</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="cs_invariant">
+<a class="viewcode-back" href="../../modules/invariant.html#twiss.invariant.cs_invariant">[docs]</a>
+<span class="k">def</span> <span class="nf">cs_invariant</span><span class="p">(</span><span class="n">twiss</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+                 <span class="n">orbit</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute linear invariants for a given CS twiss and orbit</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    twiss: Tensor</span>
+<span class="sd">        CS twiss</span>
+<span class="sd">        ax, bx, ay, by</span>
+<span class="sd">    orbit: Tensor</span>
+<span class="sd">        orbit</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tensor</span>
+<span class="sd">        [jx, jy] for each turn</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Orbit is assumed to have the form [..., [qx_i, px_i, qy_i, py_i], ...]</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from math import pi</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.twiss import twiss</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.convert import wolski_to_cs</span>
+<span class="sd">    &gt;&gt;&gt; m = rotation(*2*pi*torch.tensor([0.12, 0.31], dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; t, n, w = twiss(m)</span>
+<span class="sd">    &gt;&gt;&gt; cs = wolski_to_cs(w)</span>
+<span class="sd">    &gt;&gt;&gt; x = torch.tensor([[1, 0, 1, 0]], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(cs_invariant(cs, x), cs_invariant(cs, torch.func.vmap(lambda x: m @ x)(x)))</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">normal</span> <span class="o">=</span> <span class="n">cs_normal</span><span class="p">(</span><span class="n">twiss</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">invariant</span><span class="p">(</span><span class="n">normal</span><span class="p">,</span> <span class="n">orbit</span><span class="p">)</span></div>
 
 </pre></div>
 

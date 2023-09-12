@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>twiss.normal &mdash; twiss  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            twiss
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Examples:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html">Example-01: Coupled twiss parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-02:-Tune-derivatives">Example-02: Tune derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-03:-Twiss-derivatives">Example-03: Twiss derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-04:-Phase-advance-derivatives">Example-04: Phase advance derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-05:-Tune-uncertainty-from-systematic-errors">Example-05: Tune uncertainty from systematic errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-06:-Matching-(composable)">Example-06: Matching (composable)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-07:-Matching-(autograd)">Example-07: Matching (autograd)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/twiss.html#Example-08:-Matching-(autograd-&amp;-taylor-model)">Example-08: Matching (autograd &amp; taylor model)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/math.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/math.html#twiss.math.mod"><code class="docutils literal notranslate"><span class="pre">mod()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html">Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.is_symplectic"><code class="docutils literal notranslate"><span class="pre">is_symplectic()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.projection"><code class="docutils literal notranslate"><span class="pre">projection()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.rotation"><code class="docutils literal notranslate"><span class="pre">rotation()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.rotation_block"><code class="docutils literal notranslate"><span class="pre">rotation_block()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectic_block"><code class="docutils literal notranslate"><span class="pre">symplectic_block()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectic_identity"><code class="docutils literal notranslate"><span class="pre">symplectic_identity()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectic_inverse"><code class="docutils literal notranslate"><span class="pre">symplectic_inverse()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectify"><code class="docutils literal notranslate"><span class="pre">symplectify()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html">Twiss</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.advance"><code class="docutils literal notranslate"><span class="pre">advance()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.is_stable"><code class="docutils literal notranslate"><span class="pre">is_stable()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.propagate"><code class="docutils literal notranslate"><span class="pre">propagate()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.twiss"><code class="docutils literal notranslate"><span class="pre">twiss()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html">Normal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.cs_normal"><code class="docutils literal notranslate"><span class="pre">cs_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.lb_normal"><code class="docutils literal notranslate"><span class="pre">lb_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.normal_to_wolski"><code class="docutils literal notranslate"><span class="pre">normal_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.parametric"><code class="docutils literal notranslate"><span class="pre">parametric()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.wolski_to_normal"><code class="docutils literal notranslate"><span class="pre">wolski_to_normal()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/convert.html">Convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/convert.html#twiss.convert.cs_to_wolski"><code class="docutils literal notranslate"><span class="pre">cs_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/convert.html#twiss.convert.lb_to_wolski"><code class="docutils literal notranslate"><span class="pre">lb_to_wolski()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/convert.html#twiss.convert.wolski_to_cs"><code class="docutils literal notranslate"><span class="pre">wolski_to_cs()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/convert.html#twiss.convert.wolski_to_lb"><code class="docutils literal notranslate"><span class="pre">wolski_to_lb()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/invariant.html">Invariant</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/invariant.html#twiss.invariant.cs_invariant"><code class="docutils literal notranslate"><span class="pre">cs_invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/invariant.html#twiss.invariant.invariant"><code class="docutils literal notranslate"><span class="pre">invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/invariant.html#twiss.invariant.lb_invariant"><code class="docutils literal notranslate"><span class="pre">lb_invariant()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html">Transport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.cs_transport"><code class="docutils literal notranslate"><span class="pre">cs_transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.lb_transport"><code class="docutils literal notranslate"><span class="pre">lb_transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.momenta"><code class="docutils literal notranslate"><span class="pre">momenta()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.transport"><code class="docutils literal notranslate"><span class="pre">transport()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.wolski_transport"><code class="docutils literal notranslate"><span class="pre">wolski_transport()</span></code></a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">twiss</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">twiss.normal</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for twiss.normal</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Normal</span>
+<span class="sd">------</span>
+
+<span class="sd">Normalization matrix utils</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
+
+<span class="kn">from</span> <span class="nn">.twiss</span> <span class="kn">import</span> <span class="n">twiss</span>
+
+<div class="viewcode-block" id="normal_to_wolski">
+<a class="viewcode-back" href="../../modules/normal.html#twiss.normal.normal_to_wolski">[docs]</a>
+<span class="k">def</span> <span class="nf">normal_to_wolski</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute Wolski twiss matrices for a given normalization matrix</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n: torch.Tensor, even-dimension, symplectic</span>
+<span class="sd">        normalization matrix</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tensor</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from math import pi</span>
+<span class="sd">    &gt;&gt;&gt; import torch</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import  rotation</span>
+<span class="sd">    &gt;&gt;&gt; m = rotation(2*pi*torch.tensor(0.88, dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; t, n, w = twiss(m)</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(normal_to_wolski(n), w)</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">n</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">n</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">torch</span><span class="o">.</span><span class="n">block_diag</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">p</span><span class="o">*</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">)])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">@</span> <span class="n">p</span> <span class="o">@</span> <span class="n">n</span><span class="o">.</span><span class="n">T</span></div>
+
+
+
+<div class="viewcode-block" id="wolski_to_normal">
+<a class="viewcode-back" href="../../modules/normal.html#twiss.normal.wolski_to_normal">[docs]</a>
+<span class="k">def</span> <span class="nf">wolski_to_normal</span><span class="p">(</span><span class="n">w</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
+                     <span class="n">epsilon</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.0E-12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute normalization matrix for given Wolski twiss matrices</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    w: Tensor</span>
+<span class="sd">        Wolski twiss matrices</span>
+<span class="sd">    epsilon: float, optional, default=1.0E-12</span>
+<span class="sd">        tolerance epsilon</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tensor</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Normalization matrix is computed using fake one-turn matrix with fixed tunes</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from math import pi</span>
+<span class="sd">    &gt;&gt;&gt; import torch</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import  rotation</span>
+<span class="sd">    &gt;&gt;&gt; m = rotation(2*pi*torch.tensor(0.88, dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; t, n, w = twiss(m)</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(wolski_to_normal(w), n)</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">d</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">w</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">w</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">block_diag</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">)])</span>
+
+    <span class="n">t</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">**</span><span class="mf">0.5</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">w</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">w</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="n">m</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">@</span> <span class="n">b</span>
+        <span class="n">m</span> <span class="o">+=</span> <span class="n">s</span><span class="o">*</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span> <span class="o">-</span> <span class="p">(</span><span class="n">s</span> <span class="o">@</span> <span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">cos</span><span class="p">()</span>
+
+    <span class="n">_</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">twiss</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="n">epsilon</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">n</span></div>
+
+
+
+<div class="viewcode-block" id="parametric">
+<a class="viewcode-back" href="../../modules/normal.html#twiss.normal.parametric">[docs]</a>
+<span class="k">def</span> <span class="nf">parametric</span><span class="p">(</span><span class="n">pars</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate &#39;parametric&#39; 4x4 normalization matrix for given free elements</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pars: Tensor</span>
+<span class="sd">        free matrix elements</span>
+<span class="sd">        n11, n33, n21, n43, n13, n31, n14, n41</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tensor</span>
+<span class="sd">        normalization matrix N</span>
+<span class="sd">        M = N R N^-1</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    Elements denoted with x are computed for given free elements using symplectic condition</span>
+<span class="sd">    For n11 &gt; 0 &amp; n33 &gt; 0, all matrix elements are not singular in uncoupled limit</span>
+
+<span class="sd">        n11   0 n13 n14</span>
+<span class="sd">        n21   x   x   x</span>
+<span class="sd">        n31   x n33   0</span>
+<span class="sd">        n41   x n43   x</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import torch</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import is_symplectic</span>
+<span class="sd">    &gt;&gt;&gt; pars = torch.tensor([1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])</span>
+<span class="sd">    &gt;&gt;&gt; is_symplectic(parametric(pars))</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n11</span><span class="p">,</span> <span class="n">n33</span><span class="p">,</span> <span class="n">n21</span><span class="p">,</span> <span class="n">n43</span><span class="p">,</span> <span class="n">n13</span><span class="p">,</span> <span class="n">n31</span><span class="p">,</span> <span class="n">n14</span><span class="p">,</span> <span class="n">n41</span> <span class="o">=</span> <span class="n">pars</span>
+
+    <span class="n">n12</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">n11</span><span class="p">)</span>
+    <span class="n">n22</span> <span class="o">=</span> <span class="n">n33</span><span class="o">*</span><span class="p">(</span><span class="n">n11</span> <span class="o">+</span> <span class="n">n14</span><span class="o">*</span><span class="p">(</span><span class="n">n33</span><span class="o">*</span><span class="n">n41</span> <span class="o">-</span> <span class="n">n31</span><span class="o">*</span><span class="n">n43</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">n11</span><span class="o">*</span><span class="p">(</span><span class="n">n11</span><span class="o">*</span><span class="n">n33</span> <span class="o">-</span> <span class="n">n13</span><span class="o">*</span><span class="n">n31</span><span class="p">))</span>
+    <span class="n">n23</span> <span class="o">=</span> <span class="p">(</span><span class="n">n13</span><span class="o">*</span><span class="n">n21</span> <span class="o">+</span> <span class="n">n33</span><span class="o">*</span><span class="n">n41</span> <span class="o">-</span> <span class="n">n31</span><span class="o">*</span><span class="n">n43</span><span class="p">)</span><span class="o">/</span><span class="n">n11</span>
+    <span class="n">n24</span> <span class="o">=</span> <span class="p">(</span><span class="n">n14</span><span class="o">*</span><span class="n">n21</span><span class="o">*</span><span class="n">n33</span> <span class="o">-</span><span class="n">n31</span> <span class="o">+</span> <span class="n">n14</span><span class="o">*</span><span class="n">n31</span><span class="o">/</span><span class="n">n11</span><span class="o">*</span><span class="p">(</span><span class="n">n31</span><span class="o">*</span><span class="n">n43</span> <span class="o">-</span> <span class="n">n13</span><span class="o">*</span><span class="n">n21</span> <span class="o">-</span> <span class="n">n33</span><span class="o">*</span><span class="n">n41</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">n11</span><span class="o">*</span><span class="n">n33</span> <span class="o">-</span> <span class="n">n13</span><span class="o">*</span><span class="n">n31</span><span class="p">)</span>
+    <span class="n">n32</span> <span class="o">=</span> <span class="n">n14</span><span class="o">*</span><span class="n">n33</span><span class="o">/</span><span class="n">n11</span>
+    <span class="n">n34</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">n11</span><span class="p">)</span>
+    <span class="n">n42</span> <span class="o">=</span> <span class="p">(</span><span class="n">n13</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">n14</span><span class="o">*</span><span class="n">n33</span><span class="o">*</span><span class="n">n41</span><span class="p">)</span><span class="o">/</span><span class="n">n11</span><span class="p">)</span> <span class="o">+</span> <span class="n">n14</span><span class="o">*</span><span class="n">n33</span><span class="o">*</span><span class="n">n43</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n11</span><span class="o">*</span><span class="n">n33</span> <span class="o">-</span> <span class="n">n13</span><span class="o">*</span><span class="n">n31</span><span class="p">)</span>
+    <span class="n">n44</span> <span class="o">=</span> <span class="p">(</span><span class="n">n11</span> <span class="o">+</span> <span class="n">n14</span><span class="o">*</span><span class="p">(</span><span class="n">n33</span><span class="o">*</span><span class="n">n41</span> <span class="o">-</span> <span class="n">n31</span><span class="o">*</span><span class="n">n43</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">n11</span><span class="o">*</span><span class="n">n33</span> <span class="o">-</span> <span class="n">n13</span><span class="o">*</span><span class="n">n31</span><span class="p">)</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">n11</span><span class="p">,</span> <span class="n">n12</span><span class="p">,</span> <span class="n">n13</span><span class="p">,</span> <span class="n">n14</span><span class="p">]),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">n21</span><span class="p">,</span> <span class="n">n22</span><span class="p">,</span> <span class="n">n23</span><span class="p">,</span> <span class="n">n24</span><span class="p">]),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">n31</span><span class="p">,</span> <span class="n">n32</span><span class="p">,</span> <span class="n">n33</span><span class="p">,</span> <span class="n">n34</span><span class="p">]),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">n41</span><span class="p">,</span> <span class="n">n42</span><span class="p">,</span> <span class="n">n43</span><span class="p">,</span> <span class="n">n44</span><span class="p">])</span>
+        <span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">n</span></div>
+
+
+
+<div class="viewcode-block" id="lb_normal">
+<a class="viewcode-back" href="../../modules/normal.html#twiss.normal.lb_normal">[docs]</a>
+<span class="k">def</span> <span class="nf">lb_normal</span><span class="p">(</span><span class="n">pars</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate Lebedev-Bogacz normalization matrix</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pars: Tensor</span>
+<span class="sd">        Lebedev-Bogacz twiss parameters</span>
+<span class="sd">        a1x, b1x, a2x, b2x, a1y, b1y, a2y, b2y, u, v1, v2</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tensor</span>
+<span class="sd">        normalization matrix N, M = N R N^-1</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    ----</span>
+<span class="sd">    [a1x, b1x, a2x, b2x, a1y, b1y, a2y, b2y, u, v1, v2] are LB twiss parameters</span>
+<span class="sd">    [a1x, b1x, a2y, b2y] are &#39;in-plane&#39; twiss parameters</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import torch</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import is_symplectic</span>
+<span class="sd">    &gt;&gt;&gt; pars = torch.tensor([0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; is_symplectic(lb_normal(pars))</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">a1x</span><span class="p">,</span> <span class="n">b1x</span><span class="p">,</span> <span class="n">a2x</span><span class="p">,</span> <span class="n">b2x</span><span class="p">,</span> <span class="n">a1y</span><span class="p">,</span> <span class="n">b1y</span><span class="p">,</span> <span class="n">a2y</span><span class="p">,</span> <span class="n">b2y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v1</span><span class="p">,</span> <span class="n">v2</span> <span class="o">=</span> <span class="n">pars</span>
+
+    <span class="n">o</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">pars</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">pars</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="n">cv1</span><span class="p">,</span> <span class="n">sv1</span> <span class="o">=</span> <span class="n">v1</span><span class="o">.</span><span class="n">cos</span><span class="p">(),</span> <span class="n">v1</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span>
+    <span class="n">cv2</span><span class="p">,</span> <span class="n">sv2</span> <span class="o">=</span> <span class="n">v2</span><span class="o">.</span><span class="n">cos</span><span class="p">(),</span> <span class="n">v2</span><span class="o">.</span><span class="n">sin</span><span class="p">()</span>
+
+    <span class="n">n1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span>
+        <span class="n">b1x</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span>
+        <span class="n">o</span><span class="p">,</span>
+        <span class="n">b2x</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span><span class="o">*</span><span class="n">cv2</span><span class="p">,</span>
+        <span class="o">-</span><span class="n">b2x</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span><span class="o">*</span><span class="n">sv2</span><span class="p">])</span>
+
+    <span class="n">n2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span>
+        <span class="o">-</span><span class="n">a1x</span><span class="o">/</span><span class="n">b1x</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span>
+        <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="n">b1x</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span>
+        <span class="p">(</span><span class="o">-</span><span class="n">a2x</span><span class="o">*</span><span class="n">cv2</span> <span class="o">+</span> <span class="n">u</span><span class="o">*</span><span class="n">sv2</span><span class="p">)</span><span class="o">/</span><span class="n">b2x</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span>
+        <span class="p">(</span><span class="n">a2x</span><span class="o">*</span><span class="n">sv2</span> <span class="o">+</span> <span class="n">u</span><span class="o">*</span><span class="n">cv2</span><span class="p">)</span><span class="o">/</span><span class="n">b2x</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()])</span>
+
+    <span class="n">n3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span>
+        <span class="n">b1y</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span><span class="o">*</span><span class="n">cv1</span><span class="p">,</span>
+        <span class="o">-</span><span class="n">b1y</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()</span><span class="o">*</span><span class="n">sv1</span><span class="p">,</span>
+        <span class="n">b2y</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span>
+        <span class="n">o</span><span class="p">])</span>
+
+    <span class="n">n4</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span>
+        <span class="p">(</span><span class="o">-</span><span class="n">a1y</span><span class="o">*</span><span class="n">cv1</span> <span class="o">+</span> <span class="n">u</span><span class="o">*</span><span class="n">sv1</span><span class="p">)</span><span class="o">/</span><span class="n">b1y</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span>
+        <span class="p">(</span><span class="n">a1y</span><span class="o">*</span><span class="n">sv1</span> <span class="o">+</span> <span class="n">u</span><span class="o">*</span><span class="n">cv1</span><span class="p">)</span><span class="o">/</span><span class="n">b1y</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span>
+        <span class="o">-</span><span class="n">a2y</span><span class="o">/</span><span class="n">b2y</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span>
+        <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="n">b2y</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()])</span>
+
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">n3</span><span class="p">,</span> <span class="n">n4</span><span class="p">])</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">posinf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">neginf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="cs_normal">
+<a class="viewcode-back" href="../../modules/normal.html#twiss.normal.cs_normal">[docs]</a>
+<span class="k">def</span> <span class="nf">cs_normal</span><span class="p">(</span><span class="n">pars</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate Courant-Snyder normalization matrix</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pars: Tensor</span>
+<span class="sd">        Courant-Snyder twiss parameters</span>
+<span class="sd">        ax, bx, ay, by</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tensor</span>
+<span class="sd">        normalization matrix N, M = N R N^-1</span>
+
+<span class="sd">    Note</span>
+<span class="sd">    -----</span>
+<span class="sd">    [ax, bx, ay, by] are CS twiss parameters</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; import torch</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import is_symplectic</span>
+<span class="sd">    &gt;&gt;&gt; pars = torch.tensor([0, 1, 0, 1], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; is_symplectic(cs_normal(pars))</span>
+<span class="sd">    True</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ax</span><span class="p">,</span> <span class="n">bx</span><span class="p">,</span> <span class="n">ay</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="n">pars</span>
+
+    <span class="n">o</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">pars</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">pars</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">bx</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span> <span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="p">]),</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="o">-</span><span class="n">ax</span><span class="o">/</span><span class="n">bx</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span> <span class="mi">1</span><span class="o">/</span><span class="n">bx</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span> <span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="p">]),</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">by</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span> <span class="n">o</span><span class="p">]),</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">o</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="o">-</span><span class="n">ay</span><span class="o">/</span><span class="n">by</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(),</span> <span class="mi">1</span><span class="o">/</span><span class="n">by</span><span class="o">.</span><span class="n">sqrt</span><span class="p">()]),</span>
+    <span class="p">])</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">posinf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">neginf</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Ivan Morozov.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
