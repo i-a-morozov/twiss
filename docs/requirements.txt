@@ -1,5 +1,0 @@
-numpy
-torch
-ipykernel
-nbsphinx
-twiss
