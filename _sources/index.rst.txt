@@ -13,7 +13,7 @@ Coupled twiss parameters (Wolski twiss matrices) computation for arbitrary even 
    :caption: API:
    :maxdepth: 1
 
-   modules/math.rst
+   modules/util.rst
    modules/matrix.rst
    modules/twiss.rst
    modules/normal.rst
