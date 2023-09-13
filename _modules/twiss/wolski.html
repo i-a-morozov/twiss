@@ -395,9 +395,11 @@
 <span class="sd">    &gt;&gt;&gt; from twiss.matrix import  rotation</span>
 <span class="sd">    &gt;&gt;&gt; m = rotation(2*pi*torch.tensor(0.88, dtype=torch.float64))</span>
 <span class="sd">    &gt;&gt;&gt; _, n, _ = twiss(m)</span>
-<span class="sd">    &gt;&gt;&gt; advance(n, torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64))</span>
-<span class="sd">    (tensor([0.0997], dtype=torch.float64), tensor([[ 1.0050e+00, -1.3878e-17],</span>
-<span class="sd">            [ 9.9504e-02,  9.9504e-01]], dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; mu, n = advance(n, torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(mu, tensor([0.0997], dtype=torch.float64))</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(mu, tensor([[ 1.0050, 0.0], [ 0.099504,  0.99504]], dtype=torch.float64))</span>
+<span class="sd">    True</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">d</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
