@@ -77,14 +77,14 @@ def wolski_transport(pars1:Tensor,
     >>> from twiss.matrix import rotation
     >>> from twiss.twiss import twiss
     >>> from twiss.twiss import propagate
+    >>> from twiss.twiss import advance
     >>> t = torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64)
     >>> m = rotation(2*pi*torch.tensor(0.12, dtype=torch.float64))
     >>> _, n1, w1 = twiss(m @ t)
     >>> mu12, n2 = advance(n1, t)
     >>> w2 = propagate(w1, t)
-    >>> wolski_transport(w1, w2, *mu12)
-    tensor([[1.0000, 0.1000],
-            [0.0000, 1.0000]], dtype=torch.float64)
+    >>> torch.allclose(t, wolski_transport(w1, w2, *mu12))
+    True
 
     """
     n1 = wolski_to_normal(pars1)

@@ -62,7 +62,7 @@ def twiss(m:Tensor, *,
             [0.0000, 1.0000]], dtype=torch.float64)
     >>> w
     tensor([[[1.0000, 0.0000],
-            [0.0000, 1.0000]]], dtype=torch.float64)
+             [0.0000, 1.0000]]], dtype=torch.float64)
 
     >>> from math import pi
     >>> import torch
@@ -71,7 +71,7 @@ def twiss(m:Tensor, *,
     >>> t, n, w = twiss(m)
     >>> t
     tensor([0.1000, 0.2000, 0.3000, 0.4000, 0.5000, 0.6000, 0.7000, 0.8000, 0.9000],
-        dtype=torch.float64)
+           dtype=torch.float64)
 
     >>> from math import pi
     >>> import torch
@@ -230,7 +230,7 @@ def propagate(w:Tensor,
     >>> *_, w = twiss(m)
     >>> propagate(w, torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64))
     tensor([[[1.0100, 0.1000],
-            [0.1000, 1.0000]]], dtype=torch.float64)
+             [0.1000, 1.0000]]], dtype=torch.float64)
 
     """
     return m @ w @ m.T
@@ -266,8 +266,7 @@ def advance(n:Tensor,
     >>> m = rotation(2*pi*torch.tensor(0.88, dtype=torch.float64))
     >>> _, n, _ = twiss(m)
     >>> advance(n, torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64))
-    (tensor([0.0997], dtype=torch.float64),
-    tensor([[ 1.0050e+00, -1.3878e-17],
+    (tensor([0.0997], dtype=torch.float64), tensor([[ 1.0050e+00, -1.3878e-17],
             [ 9.9504e-02,  9.9504e-01]], dtype=torch.float64))
 
     """
