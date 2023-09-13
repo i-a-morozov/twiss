@@ -15,7 +15,7 @@ Coupled twiss parameters (Wolski twiss matrices) computation for arbitrary even 
 
    modules/util.rst
    modules/matrix.rst
-   modules/twiss.rst
+   modules/wolski.rst
    modules/normal.rst
    modules/convert.rst
    modules/invariant.rst
