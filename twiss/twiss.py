@@ -13,7 +13,7 @@ from math import pi
 import torch
 from torch import Tensor
 
-from .math import mod
+from .util import mod
 from .matrix import rotation
 
 def twiss(m:Tensor, *,
