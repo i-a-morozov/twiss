@@ -126,11 +126,9 @@ def lb_transport(pars1:Tensor,
     >>> _, n1, w1 = twiss(m @ t)
     >>> mu12, n2 = advance(n1, t)
     >>> w2 = normal_to_wolski(n2)
-    >>> lb_transport(*torch.func.vmap(wolski_to_lb)(torch.stack([w1, w2])), *mu12)
-    tensor([[1.0000e+00, 1.0000e-01, 0.0000e+00, 0.0000e+00],
-            [1.3878e-17, 1.0000e+00, 0.0000e+00, 0.0000e+00],
-            [0.0000e+00, 0.0000e+00, 1.0000e+00, 1.0000e-01],
-            [0.0000e+00, 0.0000e+00, 1.3878e-16, 1.0000e+00]], dtype=torch.float64)
+    >>> t_lb = lb_transport(*torch.func.vmap(wolski_to_lb)(torch.stack([w1, w2])), *mu12)
+    >>> torch.allclose(t, t_lb)
+    True
 
     """
     n1 = lb_normal(pars1)
@@ -172,11 +170,9 @@ def cs_transport(pars1:Tensor,
     >>> _, n1, w1 = twiss(m @ t)
     >>> mu12, n2 = advance(n1, t)
     >>> w2 = normal_to_wolski(n2)
-    >>> cs_transport(*torch.func.vmap(wolski_to_cs)(torch.stack([w1, w2])), *mu12)
-    tensor([[1.0000e+00, 1.0000e-01, 0.0000e+00, 0.0000e+00],
-            [2.7756e-17, 1.0000e+00, 0.0000e+00, 0.0000e+00],
-            [0.0000e+00, 0.0000e+00, 1.0000e+00, 1.0000e-01],
-            [0.0000e+00, 0.0000e+00, 1.5959e-16, 1.0000e+00]], dtype=torch.float64)
+    >>> t_cs = cs_transport(*torch.func.vmap(wolski_to_cs)(torch.stack([w1, w2])), *mu12)
+    >>> torch.allclose(t, t_cs)
+    True
 
     """
     n1 = cs_normal(pars1)

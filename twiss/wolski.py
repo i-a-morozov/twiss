@@ -265,9 +265,11 @@ def advance(n:Tensor,
     >>> from twiss.matrix import  rotation
     >>> m = rotation(2*pi*torch.tensor(0.88, dtype=torch.float64))
     >>> _, n, _ = twiss(m)
-    >>> advance(n, torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64))
-    (tensor([0.0997], dtype=torch.float64), tensor([[ 1.0050e+00, -1.3878e-17],
-            [ 9.9504e-02,  9.9504e-01]], dtype=torch.float64))
+    >>> mu, n = advance(n, torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64))
+    >>> torch.allclose(mu, torch.tensor([0.0997], dtype=torch.float64))
+    True
+    >>> torch.allclose(mu, torch.tensor([[1.0050, 0.0], [0.099504, 0.99504]], dtype=torch.float64))
+    True
 
     """
     d = len(n) // 2
