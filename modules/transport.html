@@ -152,11 +152,9 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">w1</span> <span class="o">=</span> <span class="n">twiss</span><span class="p">(</span><span class="n">m</span> <span class="o">@</span> <span class="n">t</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mu12</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">advance</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w2</span> <span class="o">=</span> <span class="n">normal_to_wolski</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cs_transport</span><span class="p">(</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="n">wolski_to_cs</span><span class="p">)(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">])),</span> <span class="o">*</span><span class="n">mu12</span><span class="p">)</span>
-<span class="go">tensor([[1.0000e+00, 1.0000e-01, 0.0000e+00, 0.0000e+00],</span>
-<span class="go">        [2.7756e-17, 1.0000e+00, 0.0000e+00, 0.0000e+00],</span>
-<span class="go">        [0.0000e+00, 0.0000e+00, 1.0000e+00, 1.0000e-01],</span>
-<span class="go">        [0.0000e+00, 0.0000e+00, 1.5959e-16, 1.0000e+00]], dtype=torch.float64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t_cs</span> <span class="o">=</span> <span class="n">cs_transport</span><span class="p">(</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="n">wolski_to_cs</span><span class="p">)(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">])),</span> <span class="o">*</span><span class="n">mu12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t_cs</span><span class="p">)</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -191,11 +189,9 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">w1</span> <span class="o">=</span> <span class="n">twiss</span><span class="p">(</span><span class="n">m</span> <span class="o">@</span> <span class="n">t</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mu12</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">advance</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">w2</span> <span class="o">=</span> <span class="n">normal_to_wolski</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lb_transport</span><span class="p">(</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="n">wolski_to_lb</span><span class="p">)(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">])),</span> <span class="o">*</span><span class="n">mu12</span><span class="p">)</span>
-<span class="go">tensor([[1.0000e+00, 1.0000e-01, 0.0000e+00, 0.0000e+00],</span>
-<span class="go">        [1.3878e-17, 1.0000e+00, 0.0000e+00, 0.0000e+00],</span>
-<span class="go">        [0.0000e+00, 0.0000e+00, 1.0000e+00, 1.0000e-01],</span>
-<span class="go">        [0.0000e+00, 0.0000e+00, 1.3878e-16, 1.0000e+00]], dtype=torch.float64)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t_lb</span> <span class="o">=</span> <span class="n">lb_transport</span><span class="p">(</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="n">wolski_to_lb</span><span class="p">)(</span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">])),</span> <span class="o">*</span><span class="n">mu12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">t_lb</span><span class="p">)</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 </dd></dl>

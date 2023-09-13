@@ -253,11 +253,9 @@
 <span class="sd">    &gt;&gt;&gt; _, n1, w1 = twiss(m @ t)</span>
 <span class="sd">    &gt;&gt;&gt; mu12, n2 = advance(n1, t)</span>
 <span class="sd">    &gt;&gt;&gt; w2 = normal_to_wolski(n2)</span>
-<span class="sd">    &gt;&gt;&gt; lb_transport(*torch.func.vmap(wolski_to_lb)(torch.stack([w1, w2])), *mu12)</span>
-<span class="sd">    tensor([[1.0000e+00, 1.0000e-01, 0.0000e+00, 0.0000e+00],</span>
-<span class="sd">            [1.3878e-17, 1.0000e+00, 0.0000e+00, 0.0000e+00],</span>
-<span class="sd">            [0.0000e+00, 0.0000e+00, 1.0000e+00, 1.0000e-01],</span>
-<span class="sd">            [0.0000e+00, 0.0000e+00, 1.3878e-16, 1.0000e+00]], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; t_lb = lb_transport(*torch.func.vmap(wolski_to_lb)(torch.stack([w1, w2])), *mu12)</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(t, t_lb)</span>
+<span class="sd">    True</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">n1</span> <span class="o">=</span> <span class="n">lb_normal</span><span class="p">(</span><span class="n">pars1</span><span class="p">)</span>
@@ -302,11 +300,9 @@
 <span class="sd">    &gt;&gt;&gt; _, n1, w1 = twiss(m @ t)</span>
 <span class="sd">    &gt;&gt;&gt; mu12, n2 = advance(n1, t)</span>
 <span class="sd">    &gt;&gt;&gt; w2 = normal_to_wolski(n2)</span>
-<span class="sd">    &gt;&gt;&gt; cs_transport(*torch.func.vmap(wolski_to_cs)(torch.stack([w1, w2])), *mu12)</span>
-<span class="sd">    tensor([[1.0000e+00, 1.0000e-01, 0.0000e+00, 0.0000e+00],</span>
-<span class="sd">            [2.7756e-17, 1.0000e+00, 0.0000e+00, 0.0000e+00],</span>
-<span class="sd">            [0.0000e+00, 0.0000e+00, 1.0000e+00, 1.0000e-01],</span>
-<span class="sd">            [0.0000e+00, 0.0000e+00, 1.5959e-16, 1.0000e+00]], dtype=torch.float64)</span>
+<span class="sd">    &gt;&gt;&gt; t_cs = cs_transport(*torch.func.vmap(wolski_to_cs)(torch.stack([w1, w2])), *mu12)</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(t, t_cs)</span>
+<span class="sd">    True</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">n1</span> <span class="o">=</span> <span class="n">cs_normal</span><span class="p">(</span><span class="n">pars1</span><span class="p">)</span>
