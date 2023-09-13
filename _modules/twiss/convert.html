@@ -64,11 +64,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectic_identity"><code class="docutils literal notranslate"><span class="pre">symplectic_identity()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectic_inverse"><code class="docutils literal notranslate"><span class="pre">symplectic_inverse()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectify"><code class="docutils literal notranslate"><span class="pre">symplectify()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html">Twiss</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.advance"><code class="docutils literal notranslate"><span class="pre">advance()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.is_stable"><code class="docutils literal notranslate"><span class="pre">is_stable()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.propagate"><code class="docutils literal notranslate"><span class="pre">propagate()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.twiss"><code class="docutils literal notranslate"><span class="pre">twiss()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html">Normal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.cs_normal"><code class="docutils literal notranslate"><span class="pre">cs_normal()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.lb_normal"><code class="docutils literal notranslate"><span class="pre">lb_normal()</span></code></a></li>
@@ -128,9 +123,9 @@
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
 
-<span class="kn">from</span> <span class="nn">.matrix</span> <span class="kn">import</span> <span class="n">projection</span>
-<span class="kn">from</span> <span class="nn">.normal</span> <span class="kn">import</span> <span class="n">lb_normal</span>
-<span class="kn">from</span> <span class="nn">.normal</span> <span class="kn">import</span> <span class="n">cs_normal</span>
+<span class="kn">from</span> <span class="nn">twiss.matrix</span> <span class="kn">import</span> <span class="n">projection</span>
+<span class="kn">from</span> <span class="nn">twiss.normal</span> <span class="kn">import</span> <span class="n">lb_normal</span>
+<span class="kn">from</span> <span class="nn">twiss.normal</span> <span class="kn">import</span> <span class="n">cs_normal</span>
 
 <div class="viewcode-block" id="wolski_to_lb">
 <a class="viewcode-back" href="../../modules/convert.html#twiss.convert.wolski_to_lb">[docs]</a>
@@ -157,7 +152,7 @@
 <span class="sd">    &gt;&gt;&gt; from math import pi</span>
 <span class="sd">    &gt;&gt;&gt; import torch</span>
 <span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
-<span class="sd">    &gt;&gt;&gt; from twiss.twiss import twiss</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.wolski import twiss</span>
 <span class="sd">    &gt;&gt;&gt; m = rotation(*2*pi*torch.tensor([0.12, 0.19], dtype=torch.float64))</span>
 <span class="sd">    &gt;&gt;&gt; t, n, w = twiss(m)</span>
 <span class="sd">    &gt;&gt;&gt; torch.allclose(w, lb_to_wolski(wolski_to_lb(w)))</span>
@@ -215,7 +210,7 @@
 <span class="sd">    &gt;&gt;&gt; from math import pi</span>
 <span class="sd">    &gt;&gt;&gt; import torch</span>
 <span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
-<span class="sd">    &gt;&gt;&gt; from twiss.twiss import twiss</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.wolski import twiss</span>
 <span class="sd">    &gt;&gt;&gt; m = rotation(*2*pi*torch.tensor([0.12, 0.19], dtype=torch.float64))</span>
 <span class="sd">    &gt;&gt;&gt; t, n, w = twiss(m)</span>
 <span class="sd">    &gt;&gt;&gt; torch.allclose(w, lb_to_wolski(wolski_to_lb(w)))</span>
@@ -258,7 +253,7 @@
 <span class="sd">    &gt;&gt;&gt; from math import pi</span>
 <span class="sd">    &gt;&gt;&gt; import torch</span>
 <span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
-<span class="sd">    &gt;&gt;&gt; from twiss.twiss import twiss</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.wolski import twiss</span>
 <span class="sd">    &gt;&gt;&gt; m = rotation(*2*pi*torch.tensor([0.12, 0.19], dtype=torch.float64))</span>
 <span class="sd">    &gt;&gt;&gt; t, n, w = twiss(m)</span>
 <span class="sd">    &gt;&gt;&gt; torch.allclose(w, cs_to_wolski(wolski_to_cs(w)))</span>
@@ -302,7 +297,7 @@
 <span class="sd">    &gt;&gt;&gt; from math import pi</span>
 <span class="sd">    &gt;&gt;&gt; import torch</span>
 <span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
-<span class="sd">    &gt;&gt;&gt; from twiss.twiss import twiss</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.wolski import twiss</span>
 <span class="sd">    &gt;&gt;&gt; m = rotation(*2*pi*torch.tensor([0.12, 0.19], dtype=torch.float64))</span>
 <span class="sd">    &gt;&gt;&gt; t, n, w = twiss(m)</span>
 <span class="sd">    &gt;&gt;&gt; torch.allclose(w, cs_to_wolski(wolski_to_cs(w)))</span>

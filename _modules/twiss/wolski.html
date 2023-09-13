@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>twiss.twiss &mdash; twiss  documentation</title>
+  <title>twiss.wolski &mdash; twiss  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -64,11 +64,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectic_identity"><code class="docutils literal notranslate"><span class="pre">symplectic_identity()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectic_inverse"><code class="docutils literal notranslate"><span class="pre">symplectic_inverse()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/matrix.html#twiss.matrix.symplectify"><code class="docutils literal notranslate"><span class="pre">symplectify()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html">Twiss</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.advance"><code class="docutils literal notranslate"><span class="pre">advance()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.is_stable"><code class="docutils literal notranslate"><span class="pre">is_stable()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.propagate"><code class="docutils literal notranslate"><span class="pre">propagate()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/twiss.html#twiss.twiss.twiss"><code class="docutils literal notranslate"><span class="pre">twiss()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html">Normal</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.cs_normal"><code class="docutils literal notranslate"><span class="pre">cs_normal()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/normal.html#twiss.normal.lb_normal"><code class="docutils literal notranslate"><span class="pre">lb_normal()</span></code></a></li>
@@ -107,7 +102,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">twiss.twiss</li>
+      <li class="breadcrumb-item active">twiss.wolski</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -116,9 +111,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for twiss.twiss</h1><div class="highlight"><pre>
+  <h1>Source code for twiss.wolski</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Twiss</span>
+<span class="sd">Wolski</span>
 <span class="sd">-----</span>
 
 <span class="sd">Compute coupled Wolski twiss matrices and normalization matrix in standard gauge</span>
@@ -132,25 +127,25 @@
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
 
-<span class="kn">from</span> <span class="nn">.util</span> <span class="kn">import</span> <span class="n">mod</span>
-<span class="kn">from</span> <span class="nn">.matrix</span> <span class="kn">import</span> <span class="n">rotation</span>
+<span class="kn">from</span> <span class="nn">twiss.util</span> <span class="kn">import</span> <span class="n">mod</span>
+<span class="kn">from</span> <span class="nn">twiss.matrix</span> <span class="kn">import</span> <span class="n">rotation</span>
 
 <div class="viewcode-block" id="twiss">
-<a class="viewcode-back" href="../../modules/twiss.html#twiss.twiss.twiss">[docs]</a>
+<a class="viewcode-back" href="../../modules/wolski.html#twiss.wolski.twiss">[docs]</a>
 <span class="k">def</span> <span class="nf">twiss</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
           <span class="n">epsilon</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.0E-12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute coupled Wolski twiss parameters for a given one-turn input matrix</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns fractional tunes, normalization matrix (standard gauge) and Wolski twiss matrices</span>
-<span class="sd">    </span>
+
 <span class="sd">    Input matrix can have arbitrary even dimension</span>
 <span class="sd">    Input matrix stability is not checked</span>
 
 <span class="sd">    Symplectic block is [[0, 1], [-1, 0]]</span>
 <span class="sd">    Rotation block is [[cos(alpha), sin(alpha)], [-sin(alpha), cos(alpha)]]</span>
 <span class="sd">    Complex block is 1/sqrt(2)*[[1, 1j], [1, -1j]]</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    m: Tensor, even-dimension, symplectic</span>
@@ -164,7 +159,7 @@
 <span class="sd">        fractional tunes [..., T_I, ...]</span>
 <span class="sd">        normalization matrix (standard gauge) N</span>
 <span class="sd">        twiss matrices W = [..., W_I, ...]</span>
-<span class="sd">    </span>
+
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    M = N R N^-1 = ... + W_I S sin(2*pi*T_I) - (W_I S)**2 cos(2*pi*T_I) + ...</span>
@@ -183,7 +178,7 @@
 <span class="sd">            [0.0000, 1.0000]], dtype=torch.float64)</span>
 <span class="sd">    &gt;&gt;&gt; w</span>
 <span class="sd">    tensor([[[1.0000, 0.0000],</span>
-<span class="sd">            [0.0000, 1.0000]]], dtype=torch.float64)</span>
+<span class="sd">             [0.0000, 1.0000]]], dtype=torch.float64)</span>
 
 <span class="sd">    &gt;&gt;&gt; from math import pi</span>
 <span class="sd">    &gt;&gt;&gt; import torch</span>
@@ -192,7 +187,7 @@
 <span class="sd">    &gt;&gt;&gt; t, n, w = twiss(m)</span>
 <span class="sd">    &gt;&gt;&gt; t</span>
 <span class="sd">    tensor([0.1000, 0.2000, 0.3000, 0.4000, 0.5000, 0.6000, 0.7000, 0.8000, 0.9000],</span>
-<span class="sd">        dtype=torch.float64)</span>
+<span class="sd">           dtype=torch.float64)</span>
 
 <span class="sd">    &gt;&gt;&gt; from math import pi</span>
 <span class="sd">    &gt;&gt;&gt; import torch</span>
@@ -289,7 +284,7 @@
 
 
 <div class="viewcode-block" id="is_stable">
-<a class="viewcode-back" href="../../modules/twiss.html#twiss.twiss.is_stable">[docs]</a>
+<a class="viewcode-back" href="../../modules/wolski.html#twiss.wolski.is_stable">[docs]</a>
 <span class="k">def</span> <span class="nf">is_stable</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span>
               <span class="n">epsilon</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.0E-12</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -327,7 +322,7 @@
 
 
 <div class="viewcode-block" id="propagate">
-<a class="viewcode-back" href="../../modules/twiss.html#twiss.twiss.propagate">[docs]</a>
+<a class="viewcode-back" href="../../modules/wolski.html#twiss.wolski.propagate">[docs]</a>
 <span class="k">def</span> <span class="nf">propagate</span><span class="p">(</span><span class="n">w</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
               <span class="n">m</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -343,7 +338,7 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    Tensor</span>
-<span class="sd">    </span>
+
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    W_I = M W_I M.T</span>
@@ -357,7 +352,7 @@
 <span class="sd">    &gt;&gt;&gt; *_, w = twiss(m)</span>
 <span class="sd">    &gt;&gt;&gt; propagate(w, torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64))</span>
 <span class="sd">    tensor([[[1.0100, 0.1000],</span>
-<span class="sd">            [0.1000, 1.0000]]], dtype=torch.float64)</span>
+<span class="sd">             [0.1000, 1.0000]]], dtype=torch.float64)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">m</span> <span class="o">@</span> <span class="n">w</span> <span class="o">@</span> <span class="n">m</span><span class="o">.</span><span class="n">T</span></div>
@@ -365,7 +360,7 @@
 
 
 <div class="viewcode-block" id="advance">
-<a class="viewcode-back" href="../../modules/twiss.html#twiss.twiss.advance">[docs]</a>
+<a class="viewcode-back" href="../../modules/wolski.html#twiss.wolski.advance">[docs]</a>
 <span class="k">def</span> <span class="nf">advance</span><span class="p">(</span><span class="n">n</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
             <span class="n">m</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -383,7 +378,7 @@
 <span class="sd">    tuple[Tensor, Tensor]</span>
 <span class="sd">        phase advance</span>
 <span class="sd">        final normalization matrix</span>
-<span class="sd">    </span>
+
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
 <span class="sd">    Output phase advance is mod 2 pi</span>
@@ -396,8 +391,7 @@
 <span class="sd">    &gt;&gt;&gt; m = rotation(2*pi*torch.tensor(0.88, dtype=torch.float64))</span>
 <span class="sd">    &gt;&gt;&gt; _, n, _ = twiss(m)</span>
 <span class="sd">    &gt;&gt;&gt; advance(n, torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64))</span>
-<span class="sd">    (tensor([0.0997], dtype=torch.float64),</span>
-<span class="sd">    tensor([[ 1.0050e+00, -1.3878e-17],</span>
+<span class="sd">    (tensor([0.0997], dtype=torch.float64), tensor([[ 1.0050e+00, -1.3878e-17],</span>
 <span class="sd">            [ 9.9504e-02,  9.9504e-01]], dtype=torch.float64))</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
