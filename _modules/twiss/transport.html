@@ -136,7 +136,7 @@
 <a class="viewcode-back" href="../../modules/transport.html#twiss.transport.transport">[docs]</a>
 <span class="k">def</span> <span class="nf">transport</span><span class="p">(</span><span class="n">n1</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
               <span class="n">n2</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
-              <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+              <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate transport matrix using normalization matrices and phase advances between locations</span>
 
@@ -146,7 +146,7 @@
 <span class="sd">        normalization matrix at the 1st location</span>
 <span class="sd">    n2: Tensor, even-dimension, symplectic</span>
 <span class="sd">        normalization matrix at the 2nd location</span>
-<span class="sd">    *mu12: tuple[Tensor, ...]</span>
+<span class="sd">    *mu12: Tensor</span>
 <span class="sd">        phase advances between locations</span>
 
 <span class="sd">    Returns</span>
@@ -177,7 +177,7 @@
 <a class="viewcode-back" href="../../modules/transport.html#twiss.transport.wolski_transport">[docs]</a>
 <span class="k">def</span> <span class="nf">wolski_transport</span><span class="p">(</span><span class="n">pars1</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
                      <span class="n">pars2</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
-                     <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+                     <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate transport matrix using Wolski matrices and phase advances between locations</span>
 
@@ -187,7 +187,7 @@
 <span class="sd">        Wolski matrices at the 1st location</span>
 <span class="sd">    pars2 : Tensor</span>
 <span class="sd">        Wolski matrices at the 2nd location</span>
-<span class="sd">    *mu12: tuple[Tensor, ...]</span>
+<span class="sd">    *mu12: Tensor</span>
 <span class="sd">        phase advances between locations</span>
 
 <span class="sd">    Returns</span>
@@ -221,7 +221,7 @@
 <a class="viewcode-back" href="../../modules/transport.html#twiss.transport.lb_transport">[docs]</a>
 <span class="k">def</span> <span class="nf">lb_transport</span><span class="p">(</span><span class="n">pars1</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
                  <span class="n">pars2</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
-                 <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+                 <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate transport matrix using LB twiss data between given locations</span>
 
@@ -231,7 +231,7 @@
 <span class="sd">        twiss parameters at the 1st location</span>
 <span class="sd">    pars2: Tensor</span>
 <span class="sd">        twiss parameters at the 2nd location</span>
-<span class="sd">    *mu12: tuple[Tensor, ...]</span>
+<span class="sd">    *mu12: Tensor</span>
 <span class="sd">        phase advances between locations</span>
 
 <span class="sd">    Returns</span>
@@ -270,7 +270,7 @@
 <a class="viewcode-back" href="../../modules/transport.html#twiss.transport.cs_transport">[docs]</a>
 <span class="k">def</span> <span class="nf">cs_transport</span><span class="p">(</span><span class="n">pars1</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
                  <span class="n">pars2</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
-                 <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="nb">tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+                 <span class="o">*</span><span class="n">mu12</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate transport matrix using CS twiss data between given locations</span>
 
@@ -280,7 +280,7 @@
 <span class="sd">        twiss parameters at the 1st location</span>
 <span class="sd">    pars2: Tensor</span>
 <span class="sd">        twiss parameters at the 2nd location</span>
-<span class="sd">    *mu12: tuple[Tensor, ...]</span>
+<span class="sd">    *mu12: Tensor</span>
 <span class="sd">        phase advances between locations</span>
 
 <span class="sd">    Returns</span>
