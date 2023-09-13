@@ -6,22 +6,24 @@ Math utils
 
 """
 
-def mod(x:int|float, y:int|float, z:int|float=0) -> int|float:
+from typing import Any
+
+def mod(x:Any, y:Any, z:Any=0) -> Any:
     """
     Return the remainder on division of `x` by `y` with offset `z`
 
     Parameters
     ----------
-    x: int|float
+    x: Any
         numerator
-    y: int|float
+    y: Any
         denomenator
-    z: int|float, default=0
+    z: Any, default=0
         offset
 
     Returns
     -------
-    int|float
+    Any
 
     Note
     ----

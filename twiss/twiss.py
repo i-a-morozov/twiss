@@ -158,8 +158,8 @@ def twiss(m:Tensor, *,
     n = torch.cat([*v]).H
     n = (n @ m_c).real
 
-    i = torch.arange(d, dtype=torch.int64, device=device)
-    a = (n[2*i, 2*i + 1] + 1j*n[2*i, 2*i]).angle() - 0.5*pi
+    s = torch.arange(d, dtype=torch.int64, device=device)
+    a = (n[2*s, 2*s + 1] + 1j*n[2*s, 2*s]).angle() - 0.5*pi
     n = n @ rotation(*a)
     w = n @ m_p @ n.T
 

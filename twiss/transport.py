@@ -15,7 +15,7 @@ from .normal import cs_normal
 
 def transport(n1:Tensor,
               n2:Tensor,
-              *mu12:tuple[Tensor, ...]) -> Tensor:
+              *mu12:Tensor) -> Tensor:
     """
     Generate transport matrix using normalization matrices and phase advances between locations
 
@@ -25,7 +25,7 @@ def transport(n1:Tensor,
         normalization matrix at the 1st location
     n2: Tensor, even-dimension, symplectic
         normalization matrix at the 2nd location
-    *mu12: tuple[Tensor, ...]
+    *mu12: Tensor
         phase advances between locations
 
     Returns
@@ -53,7 +53,7 @@ def transport(n1:Tensor,
 
 def wolski_transport(pars1:Tensor,
                      pars2:Tensor,
-                     *mu12:tuple[Tensor, ...]) -> Tensor:
+                     *mu12:Tensor) -> Tensor:
     """
     Generate transport matrix using Wolski matrices and phase advances between locations
 
@@ -63,7 +63,7 @@ def wolski_transport(pars1:Tensor,
         Wolski matrices at the 1st location
     pars2 : Tensor
         Wolski matrices at the 2nd location
-    *mu12: tuple[Tensor, ...]
+    *mu12: Tensor
         phase advances between locations
 
     Returns
@@ -94,7 +94,7 @@ def wolski_transport(pars1:Tensor,
 
 def lb_transport(pars1:Tensor,
                  pars2:Tensor,
-                 *mu12:tuple[Tensor, ...]) -> Tensor:
+                 *mu12:Tensor) -> Tensor:
     """
     Generate transport matrix using LB twiss data between given locations
 
@@ -104,7 +104,7 @@ def lb_transport(pars1:Tensor,
         twiss parameters at the 1st location
     pars2: Tensor
         twiss parameters at the 2nd location
-    *mu12: tuple[Tensor, ...]
+    *mu12: Tensor
         phase advances between locations
 
     Returns
@@ -140,7 +140,7 @@ def lb_transport(pars1:Tensor,
 
 def cs_transport(pars1:Tensor,
                  pars2:Tensor,
-                 *mu12:tuple[Tensor, ...]) -> Tensor:
+                 *mu12:Tensor) -> Tensor:
     """
     Generate transport matrix using CS twiss data between given locations
 
@@ -150,7 +150,7 @@ def cs_transport(pars1:Tensor,
         twiss parameters at the 1st location
     pars2: Tensor
         twiss parameters at the 2nd location
-    *mu12: tuple[Tensor, ...]
+    *mu12: Tensor
         phase advances between locations
 
     Returns

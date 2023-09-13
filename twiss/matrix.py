@@ -187,13 +187,13 @@ def rotation_block(angle:Tensor) -> Tensor:
     return torch.stack([*map(torch.stack, [[c, +s], [-s, c]])])
 
 
-def rotation(*angles:tuple[Tensor, ...]) -> Tensor:
+def rotation(*angles:Tensor) -> Tensor:
     """
     Generate rotation matrix using given angles.
 
     Parameters
     ----------
-    angles: tuple[Tensor, ...]
+    angles: Tensor
         rotation angles
 
     Returns
