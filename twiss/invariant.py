@@ -9,8 +9,8 @@ Invariant utils
 import torch
 from torch import Tensor
 
-from .normal import lb_normal
-from .normal import cs_normal
+from twiss.normal import lb_normal
+from twiss.normal import cs_normal
 
 def invariant(normal:Tensor,
               orbit:Tensor) -> Tensor:

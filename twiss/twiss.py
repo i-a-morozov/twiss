@@ -13,8 +13,8 @@ from math import pi
 import torch
 from torch import Tensor
 
-from .util import mod
-from .matrix import rotation
+from twiss.util import mod
+from twiss.matrix import rotation
 
 def twiss(m:Tensor, *,
           epsilon:float=1.0E-12) -> tuple[Tensor, Tensor, Tensor]:

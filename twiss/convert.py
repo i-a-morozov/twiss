@@ -9,9 +9,9 @@ Convert between different twiss representations
 import torch
 from torch import Tensor
 
-from .matrix import projection
-from .normal import lb_normal
-from .normal import cs_normal
+from twiss.matrix import projection
+from twiss.normal import lb_normal
+from twiss.normal import cs_normal
 
 def wolski_to_lb(pars:Tensor) -> Tensor:
     """
