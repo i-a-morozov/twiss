@@ -396,9 +396,9 @@
 <span class="sd">    &gt;&gt;&gt; m = rotation(2*pi*torch.tensor(0.88, dtype=torch.float64))</span>
 <span class="sd">    &gt;&gt;&gt; _, n, _ = twiss(m)</span>
 <span class="sd">    &gt;&gt;&gt; mu, n = advance(n, torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64))</span>
-<span class="sd">    &gt;&gt;&gt; torch.allclose(mu, tensor([0.0997], dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(mu, torch.tensor([0.0997], dtype=torch.float64))</span>
 <span class="sd">    True</span>
-<span class="sd">    &gt;&gt;&gt; torch.allclose(mu, tensor([[ 1.0050, 0.0], [ 0.099504,  0.99504]], dtype=torch.float64))</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(mu, torch.tensor([[1.0050, 0.0], [0.099504, 0.99504]], dtype=torch.float64))</span>
 <span class="sd">    True</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
