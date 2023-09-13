@@ -1,5 +1,5 @@
 """
-Twiss
+Wolski
 -----
 
 Compute coupled Wolski twiss matrices and normalization matrix in standard gauge
@@ -20,16 +20,16 @@ def twiss(m:Tensor, *,
           epsilon:float=1.0E-12) -> tuple[Tensor, Tensor, Tensor]:
     """
     Compute coupled Wolski twiss parameters for a given one-turn input matrix
-    
+
     Returns fractional tunes, normalization matrix (standard gauge) and Wolski twiss matrices
-    
+
     Input matrix can have arbitrary even dimension
     Input matrix stability is not checked
 
     Symplectic block is [[0, 1], [-1, 0]]
     Rotation block is [[cos(alpha), sin(alpha)], [-sin(alpha), cos(alpha)]]
     Complex block is 1/sqrt(2)*[[1, 1j], [1, -1j]]
-    
+
     Parameters
     ----------
     m: Tensor, even-dimension, symplectic
@@ -43,7 +43,7 @@ def twiss(m:Tensor, *,
         fractional tunes [..., T_I, ...]
         normalization matrix (standard gauge) N
         twiss matrices W = [..., W_I, ...]
-    
+
     Note
     ----
     M = N R N^-1 = ... + W_I S sin(2*pi*T_I) - (W_I S)**2 cos(2*pi*T_I) + ...
@@ -216,7 +216,7 @@ def propagate(w:Tensor,
     Returns
     -------
     Tensor
-    
+
     Note
     ----
     W_I = M W_I M.T
@@ -253,7 +253,7 @@ def advance(n:Tensor,
     tuple[Tensor, Tensor]
         phase advance
         final normalization matrix
-    
+
     Note
     ----
     Output phase advance is mod 2 pi

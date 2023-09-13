@@ -9,7 +9,7 @@ Normalization matrix utils
 import torch
 from torch import Tensor
 
-from twiss.twiss import twiss
+from twiss.wolski import twiss
 
 def normal_to_wolski(n:Tensor) -> Tensor:
     """
