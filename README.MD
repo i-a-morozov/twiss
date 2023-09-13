@@ -30,6 +30,7 @@ Compute tunes, normalization matrix and twiss matrices.
 >>> from math import pi
 >>> import torch
 >>> from twiss.matrix import  rotation
+>>> from twiss.wolski import twiss
 >>> m = rotation(2*pi*torch.tensor(0.88, dtype=torch.float64))
 >>> t, n, w = twiss(m)
 >>> t
@@ -48,6 +49,7 @@ Input matrices can have arbitrary even dimension.
 >>> from math import pi
 >>> import torch
 >>> from twiss.matrix import rotation
+>>> from twiss.wolski import twiss
 >>> m = rotation(*(2*pi*torch.linspace(0.1, 0.9, 9, dtype=torch.float64)))
 >>> t, n, w = twiss(m)
 >>> t
@@ -61,6 +63,7 @@ Can be mapped over a batch of input matrices.
 >>> from math import pi
 >>> import torch
 >>> from twiss.matrix import rotation
+>>> from twiss.wolski import twiss
 >>> m = torch.func.vmap(rotation)(2*pi*torch.linspace(0.1, 0.9, 9, dtype=torch.float64))
 >>> t, n, w = torch.func.vmap(twiss)(m)
 >>> t
@@ -81,6 +84,7 @@ Can be used to compute derivatives of observables.
     >>> from math import pi
     >>> import torch
     >>> from twiss.matrix import  rotation
+    >>> from twiss.wolski import twiss
     >>> def fn(k):
     ...    m = rotation(2*pi*torch.tensor(0.88, dtype=torch.float64))
     ...    i = torch.ones_like(k)

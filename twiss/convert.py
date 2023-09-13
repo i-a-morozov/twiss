@@ -36,7 +36,7 @@ def wolski_to_lb(pars:Tensor) -> Tensor:
     >>> from math import pi
     >>> import torch
     >>> from twiss.matrix import rotation
-    >>> from twiss.twiss import twiss
+    >>> from twiss.wolski import twiss
     >>> m = rotation(*2*pi*torch.tensor([0.12, 0.19], dtype=torch.float64))
     >>> t, n, w = twiss(m)
     >>> torch.allclose(w, lb_to_wolski(wolski_to_lb(w)))
@@ -91,7 +91,7 @@ def lb_to_wolski(pars:Tensor) -> Tensor:
     >>> from math import pi
     >>> import torch
     >>> from twiss.matrix import rotation
-    >>> from twiss.twiss import twiss
+    >>> from twiss.wolski import twiss
     >>> m = rotation(*2*pi*torch.tensor([0.12, 0.19], dtype=torch.float64))
     >>> t, n, w = twiss(m)
     >>> torch.allclose(w, lb_to_wolski(wolski_to_lb(w)))
@@ -131,7 +131,7 @@ def wolski_to_cs(pars:Tensor) -> Tensor:
     >>> from math import pi
     >>> import torch
     >>> from twiss.matrix import rotation
-    >>> from twiss.twiss import twiss
+    >>> from twiss.wolski import twiss
     >>> m = rotation(*2*pi*torch.tensor([0.12, 0.19], dtype=torch.float64))
     >>> t, n, w = twiss(m)
     >>> torch.allclose(w, cs_to_wolski(wolski_to_cs(w)))
@@ -172,7 +172,7 @@ def cs_to_wolski(pars:Tensor) -> Tensor:
     >>> from math import pi
     >>> import torch
     >>> from twiss.matrix import rotation
-    >>> from twiss.twiss import twiss
+    >>> from twiss.wolski import twiss
     >>> m = rotation(*2*pi*torch.tensor([0.12, 0.19], dtype=torch.float64))
     >>> t, n, w = twiss(m)
     >>> torch.allclose(w, cs_to_wolski(wolski_to_cs(w)))

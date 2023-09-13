@@ -37,8 +37,8 @@ def transport(n1:Tensor,
     >>> from math import pi
     >>> import torch
     >>> from twiss.matrix import rotation
-    >>> from twiss.twiss import twiss
-    >>> from twiss.twiss import advance
+    >>> from twiss.wolski import twiss
+    >>> from twiss.wolski import advance
     >>> t = torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64)
     >>> m = rotation(2*pi*torch.tensor(0.12, dtype=torch.float64))
     >>> _, n1, w1 = twiss(m @ t)
@@ -75,9 +75,9 @@ def wolski_transport(pars1:Tensor,
     >>> from math import pi
     >>> import torch
     >>> from twiss.matrix import rotation
-    >>> from twiss.twiss import twiss
-    >>> from twiss.twiss import propagate
-    >>> from twiss.twiss import advance
+    >>> from twiss.wolski import twiss
+    >>> from twiss.wolski import propagate
+    >>> from twiss.wolski import advance
     >>> t = torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64)
     >>> m = rotation(2*pi*torch.tensor(0.12, dtype=torch.float64))
     >>> _, n1, w1 = twiss(m @ t)
@@ -116,8 +116,8 @@ def lb_transport(pars1:Tensor,
     >>> from math import pi
     >>> import torch
     >>> from twiss.matrix import rotation
-    >>> from twiss.twiss import twiss
-    >>> from twiss.twiss import advance
+    >>> from twiss.wolski import twiss
+    >>> from twiss.wolski import advance
     >>> from twiss.normal import normal_to_wolski
     >>> from twiss.convert import wolski_to_lb
     >>> t = torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64)
@@ -162,8 +162,8 @@ def cs_transport(pars1:Tensor,
     >>> from math import pi
     >>> import torch
     >>> from twiss.matrix import rotation
-    >>> from twiss.twiss import twiss
-    >>> from twiss.twiss import advance
+    >>> from twiss.wolski import twiss
+    >>> from twiss.wolski import advance
     >>> from twiss.normal import normal_to_wolski
     >>> from twiss.convert import wolski_to_cs
     >>> t = torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64)

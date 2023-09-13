@@ -37,7 +37,7 @@ def invariant(normal:Tensor,
     --------
     >>> from math import pi
     >>> from twiss.matrix import rotation
-    >>> from twiss.twiss import twiss
+    >>> from twiss.wolski import twiss
     >>> m = rotation(*2*pi*torch.tensor([0.12, 0.31], dtype=torch.float64))
     >>> t, n, w = twiss(m)
     >>> x = torch.tensor([[1, 0, 1, 0]], dtype=torch.float64)
@@ -79,7 +79,7 @@ def lb_invariant(twiss:Tensor,
     --------
     >>> from math import pi
     >>> from twiss.matrix import rotation
-    >>> from twiss.twiss import twiss
+    >>> from twiss.wolski import twiss
     >>> from twiss.convert import wolski_to_lb
     >>> m = rotation(*2*pi*torch.tensor([0.12, 0.31], dtype=torch.float64))
     >>> t, n, w = twiss(m)
@@ -119,7 +119,7 @@ def cs_invariant(twiss:Tensor,
     --------
     >>> from math import pi
     >>> from twiss.matrix import rotation
-    >>> from twiss.twiss import twiss
+    >>> from twiss.wolski import twiss
     >>> from twiss.convert import wolski_to_cs
     >>> m = rotation(*2*pi*torch.tensor([0.12, 0.31], dtype=torch.float64))
     >>> t, n, w = twiss(m)
