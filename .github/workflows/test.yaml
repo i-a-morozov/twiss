@@ -35,8 +35,10 @@ jobs:
         run: |
           pip install .
           pip install pytest -U
+          pip install pytest-cov -U
       - name: Test
-        run: pytest
+        run: pytest --doctest-modules --cov
+
 
 
 
