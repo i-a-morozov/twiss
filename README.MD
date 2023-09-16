@@ -5,17 +5,11 @@ Coupled twiss parameters (Wolski twiss matrices) computation for arbitrary even 
 # Install & build
 
 ```
-$ git clone https://github.com/i-a-morozov/twiss.git
-$ cd twiss
-$ python -m pip install .
-
+$ pip install git+https://github.com/i-a-morozov/twiss.git@main
 ```
-
 or 
-
 ```
 $ pip install twiss -U
-
 ```
 
 # Documentation
