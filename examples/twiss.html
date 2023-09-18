@@ -56,6 +56,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#Example-06:-Matching-(composable)">Example-06: Matching (composable)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#Example-07:-Matching-(autograd)">Example-07: Matching (autograd)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#Example-08:-Matching-(autograd-&amp;-taylor-model)">Example-08: Matching (autograd &amp; taylor model)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Example-09:-Matched-distribution">Example-09: Matched distribution</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul>
@@ -205,7 +206,7 @@
 <span class="n">m</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">fodo</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">is_stable</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">is_stable</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_stable</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -228,7 +229,7 @@ True
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute coupled twiss parameters</span>
 
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">twiss</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">twiss</span>
 <span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">twiss</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -327,7 +328,7 @@ tensor([[ 4.946e-01,  2.032e+01, -8.454e-03,  3.297e-01],
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute twiss at each location</span>
 
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">propagate</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">propagate</span>
 
 <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">mapping</span> <span class="ow">in</span> <span class="p">(</span><span class="n">m11</span><span class="p">,</span> <span class="n">m12</span><span class="p">,</span> <span class="n">m23</span><span class="p">,</span> <span class="n">m34</span><span class="p">,</span> <span class="n">m45</span><span class="p">,</span> <span class="n">m56</span><span class="p">,</span> <span class="n">m67</span><span class="p">,</span> <span class="n">m78</span><span class="p">,</span> <span class="n">m89</span><span class="p">):</span>
@@ -413,7 +414,7 @@ torch.Size([9, 2, 4, 4])
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute phase advances</span>
 
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">advance</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">advance</span>
 
 <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">mapping</span> <span class="ow">in</span> <span class="p">(</span><span class="n">m11</span><span class="p">,</span> <span class="n">m12</span><span class="p">,</span> <span class="n">m23</span><span class="p">,</span> <span class="n">m34</span><span class="p">,</span> <span class="n">m45</span><span class="p">,</span> <span class="n">m56</span><span class="p">,</span> <span class="n">m67</span><span class="p">,</span> <span class="n">m78</span><span class="p">,</span> <span class="n">m89</span><span class="p">):</span>
@@ -533,7 +534,7 @@ tensor([1.677e-01, 2.647e-01], dtype=torch.float64)
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute tune derivatives</span>
 
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">twiss</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">twiss</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 <span class="n">k</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -677,8 +678,8 @@ tensor([1.741e-01, 2.703e-01], dtype=torch.float64)
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set task function</span>
 
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">twiss</span>
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">propagate</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">twiss</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">propagate</span>
 <span class="kn">from</span> <span class="nn">twiss.convert</span> <span class="kn">import</span> <span class="n">wolski_to_cs</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -851,8 +852,8 @@ tensor([[2.305e+01, 2.190e+01, 1.234e+01, 6.262e+00, 5.838e+00, 6.262e+00, 1.234
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set task function</span>
 
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">twiss</span>
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">advance</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">twiss</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">advance</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 <span class="n">k</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -1022,7 +1023,7 @@ tensor([[2.206e-02, 1.527e-01, 2.884e-01, 8.368e-02, 8.368e-02, 2.884e-01, 1.527
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute tune derivatives</span>
 
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">twiss</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">twiss</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 <span class="n">k</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -1058,7 +1059,7 @@ tensor([[2.206e-02, 1.527e-01, 2.884e-01, 8.368e-02, 8.368e-02, 2.884e-01, 1.527
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 tensor([1.900e-02, 1.459e-02], dtype=torch.float64)
-tensor([1.971e-02, 1.484e-02], dtype=torch.float64)
+tensor([1.952e-02, 1.420e-02], dtype=torch.float64)
 </pre></div></div>
 </div>
 </section>
@@ -1137,7 +1138,7 @@ tensor([1.971e-02, 1.484e-02], dtype=torch.float64)
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set objective function (bx &amp; by at focusing quadrupole center)</span>
 
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">twiss</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">twiss</span>
 <span class="kn">from</span> <span class="nn">twiss.convert</span> <span class="kn">import</span> <span class="n">wolski_to_cs</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -1293,7 +1294,7 @@ tensor([1.971e-02, 1.484e-02], dtype=torch.float64)
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set objective function (bx &amp; by at focusing quadrupole center)</span>
 
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">twiss</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">twiss</span>
 <span class="kn">from</span> <span class="nn">twiss.convert</span> <span class="kn">import</span> <span class="n">wolski_to_cs</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -1469,7 +1470,7 @@ tensor([2.500e+01, 5.000e+00], dtype=torch.float64)
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set objective function (bx &amp; by at focusing quadrupole center)</span>
 
-<span class="kn">from</span> <span class="nn">twiss.twiss</span> <span class="kn">import</span> <span class="n">twiss</span>
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">twiss</span>
 <span class="kn">from</span> <span class="nn">twiss.convert</span> <span class="kn">import</span> <span class="n">wolski_to_cs</span>
 
 <span class="n">dk</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -1586,6 +1587,391 @@ tensor([2.500e+01, 5.000e+00], dtype=torch.float64)
 <div class="highlight"><pre>
 tensor([2.500e+01, 5.000e+00], dtype=torch.float64)
 </pre></div></div>
+</div>
+</section>
+<section id="Example-09:-Matched-distribution">
+<h1>Example-09: Matched distribution<a class="headerlink" href="#Example-09:-Matched-distribution" title="Link to this heading"></a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sci_mode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set elements</span>
+
+<span class="k">def</span> <span class="nf">drif</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+    <span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">),</span> <span class="n">l</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">l</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span> <span class="o">+</span> <span class="n">l</span><span class="o">*</span><span class="n">px</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span> <span class="o">+</span> <span class="n">l</span><span class="o">*</span><span class="n">py</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">quad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">25</span><span class="p">):</span>
+    <span class="p">(</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">),</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">l</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">kn</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">l</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">qx</span><span class="p">,</span> <span class="n">qy</span> <span class="o">=</span> <span class="n">qx</span> <span class="o">+</span> <span class="n">l</span><span class="o">*</span><span class="n">px</span><span class="p">,</span> <span class="n">qy</span> <span class="o">+</span> <span class="n">l</span><span class="o">*</span><span class="n">py</span>
+        <span class="n">px</span><span class="p">,</span> <span class="n">py</span> <span class="o">=</span> <span class="n">px</span> <span class="o">-</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">l</span><span class="o">*</span><span class="p">(</span><span class="n">kn</span><span class="o">*</span><span class="n">qx</span> <span class="o">-</span> <span class="n">ks</span><span class="o">*</span><span class="n">qy</span><span class="p">),</span> <span class="n">py</span> <span class="o">+</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">l</span><span class="o">*</span><span class="p">(</span><span class="n">ks</span><span class="o">*</span><span class="n">qx</span> <span class="o">+</span> <span class="n">kn</span><span class="o">*</span><span class="n">qy</span><span class="p">)</span>
+        <span class="n">qx</span><span class="p">,</span> <span class="n">qy</span> <span class="o">=</span> <span class="n">qx</span> <span class="o">+</span> <span class="n">l</span><span class="o">*</span><span class="n">px</span><span class="p">,</span> <span class="n">qy</span> <span class="o">+</span> <span class="n">l</span><span class="o">*</span><span class="n">py</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">qx</span><span class="p">,</span> <span class="n">px</span><span class="p">,</span> <span class="n">qy</span><span class="p">,</span> <span class="n">py</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set transport maps</span>
+
+<span class="k">def</span> <span class="nf">m11</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span> <span class="n">kn1</span><span class="p">,</span> <span class="n">ks1</span><span class="p">,</span> <span class="n">kn2</span><span class="p">,</span> <span class="n">ks2</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span> <span class="k">return</span> <span class="n">x</span>
+<span class="k">def</span> <span class="nf">m12</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span> <span class="n">kn1</span><span class="p">,</span> <span class="n">ks1</span><span class="p">,</span> <span class="n">kn2</span><span class="p">,</span> <span class="n">ks2</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">drif</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">);</span> <span class="k">return</span> <span class="n">x</span>
+<span class="k">def</span> <span class="nf">m23</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span> <span class="n">kn1</span><span class="p">,</span> <span class="n">ks1</span><span class="p">,</span> <span class="n">kn2</span><span class="p">,</span> <span class="n">ks2</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kn2</span><span class="p">,</span> <span class="n">ks2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span> <span class="k">return</span> <span class="n">x</span>
+<span class="k">def</span> <span class="nf">m34</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span> <span class="n">kn1</span><span class="p">,</span> <span class="n">ks1</span><span class="p">,</span> <span class="n">kn2</span><span class="p">,</span> <span class="n">ks2</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">drif</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">);</span> <span class="k">return</span> <span class="n">x</span>
+<span class="k">def</span> <span class="nf">m45</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span> <span class="n">kn1</span><span class="p">,</span> <span class="n">ks1</span><span class="p">,</span> <span class="n">kn2</span><span class="p">,</span> <span class="n">ks2</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">kn1</span><span class="p">,</span> <span class="n">ks1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">);</span> <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set fodo cell</span>
+
+<span class="k">def</span> <span class="nf">fodo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">m11</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">m12</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">m23</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">m34</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">m45</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute one-turn transport matrix</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.20</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">fodo</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">is_stable</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_stable</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+tensor([[ 2.443e+00,  1.933e+01,  6.129e-02,  3.072e-01],
+        [-2.357e-01, -1.454e+00,  2.789e-03, -4.458e-02],
+        [ 5.838e-02,  2.911e-01, -6.017e-01,  3.789e+00],
+        [-3.216e-03, -7.752e-02, -3.310e-01,  4.167e-01]], dtype=torch.float64)
+True
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute coupled twiss parameters</span>
+
+<span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">twiss</span>
+<span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">ws</span> <span class="o">=</span> <span class="n">twiss</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate beam</span>
+
+<span class="kn">from</span> <span class="nn">torch.distributions.multivariate_normal</span> <span class="kn">import</span> <span class="n">MultivariateNormal</span>
+
+<span class="n">ex</span> <span class="o">=</span> <span class="mf">1.0E-6</span>
+<span class="n">ey</span> <span class="o">=</span> <span class="mf">1.0E-8</span>
+
+<span class="n">wx</span><span class="p">,</span> <span class="n">wy</span> <span class="o">=</span> <span class="n">ws</span>
+
+<span class="n">mean</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="n">covariance_matrix</span> <span class="o">=</span> <span class="n">ex</span><span class="o">*</span><span class="n">wx</span> <span class="o">+</span> <span class="n">ey</span><span class="o">*</span><span class="n">wy</span>
+
+<span class="n">distribution</span> <span class="o">=</span> <span class="n">MultivariateNormal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">)</span>
+
+<span class="n">beam</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="mi">14</span><span class="p">,</span> <span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">covariance_matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">distribution</span><span class="o">.</span><span class="n">covariance_matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">beam</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+tensor([[ 2.224e-05, -2.241e-06,  2.924e-07, -8.274e-08],
+        [-2.241e-06,  2.709e-07, -3.030e-08,  7.656e-09],
+        [ 2.924e-07, -3.030e-08,  4.186e-08,  4.045e-09],
+        [-8.274e-08,  7.656e-09,  4.045e-09,  3.639e-09]], dtype=torch.float64)
+
+tensor([[ 2.224e-05, -2.241e-06,  2.924e-07, -8.274e-08],
+        [-2.241e-06,  2.709e-07, -3.030e-08,  7.656e-09],
+        [ 2.924e-07, -3.030e-08,  4.186e-08,  4.045e-09],
+        [-8.274e-08,  7.656e-09,  4.045e-09,  3.639e-09]], dtype=torch.float64)
+
+tensor([[ 2.258e-05, -2.270e-06,  3.068e-07, -8.127e-08],
+        [-2.270e-06,  2.737e-07, -3.132e-08,  7.566e-09],
+        [ 3.068e-07, -3.132e-08,  4.250e-08,  4.150e-09],
+        [-8.127e-08,  7.566e-09,  4.150e-09,  3.737e-09]], dtype=torch.float64)
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Same with distribution function</span>
+
+<span class="kn">from</span> <span class="nn">twiss.beam</span> <span class="kn">import</span> <span class="n">distribution</span>
+
+<span class="n">bd</span> <span class="o">=</span> <span class="n">distribution</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">ex</span><span class="p">,</span> <span class="n">ey</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">ws</span><span class="p">)</span>
+
+<span class="n">beam</span> <span class="o">=</span> <span class="n">bd</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="mi">14</span><span class="p">,</span> <span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">bd</span><span class="o">.</span><span class="n">covariance_matrix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">beam</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+tensor([[ 2.224e-05, -2.241e-06,  2.924e-07, -8.274e-08],
+        [-2.241e-06,  2.709e-07, -3.030e-08,  7.656e-09],
+        [ 2.924e-07, -3.030e-08,  4.186e-08,  4.045e-09],
+        [-8.274e-08,  7.656e-09,  4.045e-09,  3.639e-09]], dtype=torch.float64)
+
+tensor([[ 2.242e-05, -2.256e-06,  2.943e-07, -8.406e-08],
+        [-2.256e-06,  2.712e-07, -3.072e-08,  7.747e-09],
+        [ 2.943e-07, -3.072e-08,  4.132e-08,  3.877e-09],
+        [-8.406e-08,  7.747e-09,  3.877e-09,  3.637e-09]], dtype=torch.float64)
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transformed beam covariance matrix (matrix)</span>
+
+<span class="nb">print</span><span class="p">((</span><span class="n">m</span> <span class="o">@</span> <span class="n">beam</span><span class="p">)</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+tensor([[ 2.207e-05, -2.237e-06,  2.902e-07, -8.037e-08],
+        [-2.237e-06,  2.718e-07, -3.016e-08,  7.510e-09],
+        [ 2.902e-07, -3.016e-08,  4.220e-08,  4.181e-09],
+        [-8.037e-08,  7.510e-09,  4.181e-09,  3.601e-09]], dtype=torch.float64)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Transformed beam covariance matrix (map)</span>
+
+<span class="n">beam</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">func</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">fodo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="p">))(</span><span class="n">beam</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">beam</span><span class="o">.</span><span class="n">cov</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+tensor([[ 2.207e-05, -2.237e-06,  2.902e-07, -8.037e-08],
+        [-2.237e-06,  2.718e-07, -3.016e-08,  7.510e-09],
+        [ 2.902e-07, -3.016e-08,  4.220e-08,  4.181e-09],
+        [-8.037e-08,  7.510e-09,  4.181e-09,  3.601e-09]], dtype=torch.float64)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare data frame for plotting</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">beam</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;qx&#39;</span><span class="p">,</span> <span class="s1">&#39;px&#39;</span><span class="p">,</span> <span class="s1">&#39;qy&#39;</span><span class="p">,</span> <span class="s1">&#39;py&#39;</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>qx</th>
+      <th>px</th>
+      <th>qy</th>
+      <th>py</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.001170</td>
+      <td>-0.000416</td>
+      <td>0.000103</td>
+      <td>0.000029</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.005233</td>
+      <td>0.000350</td>
+      <td>-0.000429</td>
+      <td>-0.000102</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.002217</td>
+      <td>0.000525</td>
+      <td>0.000127</td>
+      <td>0.000028</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-0.000162</td>
+      <td>0.000225</td>
+      <td>0.000340</td>
+      <td>0.000031</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.003292</td>
+      <td>-0.000302</td>
+      <td>-0.000155</td>
+      <td>-0.000074</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>16379</th>
+      <td>-0.000195</td>
+      <td>0.000328</td>
+      <td>-0.000051</td>
+      <td>-0.000052</td>
+    </tr>
+    <tr>
+      <th>16380</th>
+      <td>0.009093</td>
+      <td>-0.001175</td>
+      <td>0.000081</td>
+      <td>-0.000031</td>
+    </tr>
+    <tr>
+      <th>16381</th>
+      <td>-0.004319</td>
+      <td>0.000524</td>
+      <td>-0.000298</td>
+      <td>-0.000023</td>
+    </tr>
+    <tr>
+      <th>16382</th>
+      <td>0.000678</td>
+      <td>-0.000255</td>
+      <td>0.000462</td>
+      <td>0.000018</td>
+    </tr>
+    <tr>
+      <th>16383</th>
+      <td>-0.001096</td>
+      <td>0.000272</td>
+      <td>0.000163</td>
+      <td>-0.000049</td>
+    </tr>
+  </tbody>
+</table>
+<p>16384 rows × 4 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot beam</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;darkgrid&#39;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/examples_twiss_91_0.png" src="../_images/examples_twiss_91_0.png" />
+</div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
