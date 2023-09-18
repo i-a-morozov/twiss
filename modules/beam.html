@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Math &mdash; twiss  documentation</title>
+  <title>Beam &mdash; twiss  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,8 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Matrix" href="matrix.html" />
-    <link rel="prev" title="Example-01: Coupled twiss parameters" href="../examples/twiss.html" /> 
+    <link rel="prev" title="Transport" href="transport.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -56,8 +55,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Math</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#twiss.util.mod"><code class="docutils literal notranslate"><span class="pre">mod()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html#twiss.util.mod"><code class="docutils literal notranslate"><span class="pre">mod()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html">Matrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html#twiss.matrix.is_symplectic"><code class="docutils literal notranslate"><span class="pre">is_symplectic()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrix.html#twiss.matrix.projection"><code class="docutils literal notranslate"><span class="pre">projection()</span></code></a></li>
@@ -93,8 +92,8 @@
 <li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.momenta"><code class="docutils literal notranslate"><span class="pre">momenta()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.transport"><code class="docutils literal notranslate"><span class="pre">transport()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="transport.html#twiss.transport.wolski_transport"><code class="docutils literal notranslate"><span class="pre">wolski_transport()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="beam.html">Beam</a></li>
-<li class="toctree-l1"><a class="reference internal" href="beam.html#twiss.beam.distribution"><code class="docutils literal notranslate"><span class="pre">distribution()</span></code></a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Beam</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#twiss.beam.distribution"><code class="docutils literal notranslate"><span class="pre">distribution()</span></code></a></li>
 </ul>
 
         </div>
@@ -111,9 +110,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Math</li>
+      <li class="breadcrumb-item active">Beam</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/modules/util.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/modules/beam.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -121,42 +120,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="math">
-<span id="module-twiss.util"></span><h1>Math<a class="headerlink" href="#math" title="Link to this heading"></a></h1>
-<p>Math utils</p>
+  <section id="beam">
+<span id="module-twiss.beam"></span><h1>Beam<a class="headerlink" href="#beam" title="Link to this heading"></a></h1>
+<p>Matched beam utils</p>
 </section>
 <dl class="py function">
-<dt class="sig sig-object py" id="twiss.util.mod">
-<span class="sig-prename descclassname"><span class="pre">twiss.util.</span></span><span class="sig-name descname"><span class="pre">mod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../_modules/twiss/util.html#mod"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.util.mod" title="Link to this definition"></a></dt>
-<dd><p>Return the remainder on division of <cite>x</cite> by <cite>y</cite> with offset <cite>z</cite></p>
+<dt class="sig sig-object py" id="twiss.beam.distribution">
+<span class="sig-prename descclassname"><span class="pre">twiss.beam.</span></span><span class="sig-name descname"><span class="pre">distribution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mean</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emittance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wolski</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.distributions.multivariate_normal.MultivariateNormal</span></span></span><a class="reference internal" href="../_modules/twiss/beam.html#distribution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#twiss.beam.distribution" title="Link to this definition"></a></dt>
+<dd><p>Create a multivariate normal distribution</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>Any</em>) – numerator</p></li>
-<li><p><strong>y</strong> (<em>Any</em>) – denomenator</p></li>
-<li><p><strong>z</strong> (<em>Any</em><em>, </em><em>default=0</em>) – offset</p></li>
+<li><p><strong>mean</strong> (<em>Tensor</em>) – mean vector</p></li>
+<li><p><strong>emittance</strong> (<em>Tensor</em>) – emittance vector</p></li>
+<li><p><strong>wolski</strong> (<em>Tensor</em>) – wolski twiss matrices</p></li>
 </ul>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Any</p>
+<dd class="field-even"><p>MultivariateNormal</p>
 </dd>
 </dl>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">int</span></code> is returned only if all input arguments have <code class="docutils literal notranslate"><span class="pre">int</span></code> type</p>
+<p>Use sample method for generation</p>
 </div>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mod</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="go">-1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mod</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-<span class="go">1</span>
-</pre></div>
-</div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mod</span><span class="p">(</span><span class="mf">1.5</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="o">-</span><span class="n">pi</span><span class="p">)</span>
-<span class="go">-1.5707963267948966</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mod</span><span class="p">(</span><span class="mf">1.5</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="o">+</span><span class="n">pi</span><span class="p">)</span>
-<span class="go">4.71238898038469</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">twiss.matrix</span> <span class="kn">import</span> <span class="n">rotation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">twiss.normal</span> <span class="kn">import</span> <span class="n">cs_normal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">twiss.wolski</span> <span class="kn">import</span> <span class="n">twiss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="n">cs_normal</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">n</span> <span class="o">@</span> <span class="n">rotation</span><span class="p">(</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">*</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.21</span><span class="p">]))</span> <span class="o">@</span> <span class="n">n</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">ws</span> <span class="o">=</span> <span class="n">twiss</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">es</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0E-6</span><span class="p">,</span> <span class="mf">1.0E-8</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ms</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">db</span> <span class="o">=</span> <span class="n">distribution</span><span class="p">(</span><span class="n">ms</span><span class="p">,</span> <span class="n">es</span><span class="p">,</span> <span class="n">ws</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ex</span><span class="p">,</span> <span class="n">ey</span> <span class="o">=</span> <span class="n">es</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wx</span><span class="p">,</span> <span class="n">wy</span> <span class="o">=</span> <span class="n">ws</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">covariance_matrix</span><span class="p">,</span> <span class="n">ex</span><span class="o">*</span><span class="n">wx</span> <span class="o">+</span> <span class="n">ey</span><span class="o">*</span><span class="n">wy</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">torch</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">sample</span><span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="mi">20</span><span class="p">,</span> <span class="p">))</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">cov</span><span class="p">(),</span> <span class="n">db</span><span class="o">.</span><span class="n">covariance_matrix</span><span class="p">)</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -166,8 +171,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../examples/twiss.html" class="btn btn-neutral float-left" title="Example-01: Coupled twiss parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="matrix.html" class="btn btn-neutral float-right" title="Matrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="transport.html" class="btn btn-neutral float-left" title="Transport" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

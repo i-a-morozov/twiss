@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>twiss.util &mdash; twiss  documentation</title>
+  <title>twiss.beam &mdash; twiss  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -109,7 +109,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">twiss.util</li>
+      <li class="breadcrumb-item active">twiss.beam</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -118,55 +118,68 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for twiss.util</h1><div class="highlight"><pre>
+  <h1>Source code for twiss.beam</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Math</span>
+<span class="sd">Beam</span>
 <span class="sd">----</span>
 
-<span class="sd">Math utils</span>
+<span class="sd">Matched beam utils</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
+<span class="kn">from</span> <span class="nn">torch.distributions.multivariate_normal</span> <span class="kn">import</span> <span class="n">MultivariateNormal</span>
 
-<div class="viewcode-block" id="mod">
-<a class="viewcode-back" href="../../modules/util.html#twiss.util.mod">[docs]</a>
-<span class="k">def</span> <span class="nf">mod</span><span class="p">(</span><span class="n">x</span><span class="p">:</span><span class="n">Any</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="n">Any</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span><span class="n">Any</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<div class="viewcode-block" id="distribution">
+<a class="viewcode-back" href="../../modules/beam.html#twiss.beam.distribution">[docs]</a>
+<span class="k">def</span> <span class="nf">distribution</span><span class="p">(</span><span class="n">mean</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+                 <span class="n">emittance</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+                 <span class="n">wolski</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MultivariateNormal</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Return the remainder on division of `x` by `y` with offset `z`</span>
+<span class="sd">    Create a multivariate normal distribution</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    x: Any</span>
-<span class="sd">        numerator</span>
-<span class="sd">    y: Any</span>
-<span class="sd">        denomenator</span>
-<span class="sd">    z: Any, default=0</span>
-<span class="sd">        offset</span>
+<span class="sd">    mean: Tensor</span>
+<span class="sd">        mean vector</span>
+<span class="sd">    emittance: Tensor</span>
+<span class="sd">        emittance vector</span>
+<span class="sd">    wolski: Tensor</span>
+<span class="sd">        wolski twiss matrices</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    Any</span>
+<span class="sd">    MultivariateNormal</span>
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    ``int`` is returned only if all input arguments have ``int`` type</span>
+<span class="sd">    Use sample method for generation</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; mod(5, 2, -1)</span>
-<span class="sd">    -1</span>
-<span class="sd">    &gt;&gt;&gt; mod(5, 2, +1)</span>
-<span class="sd">    1</span>
-
 <span class="sd">    &gt;&gt;&gt; from math import pi</span>
-<span class="sd">    &gt;&gt;&gt; mod(1.5*pi, 2.0*pi, -pi)</span>
-<span class="sd">    -1.5707963267948966</span>
-<span class="sd">    &gt;&gt;&gt; mod(1.5*pi, 2.0*pi, +pi)</span>
-<span class="sd">    4.71238898038469</span>
-
+<span class="sd">    &gt;&gt;&gt; import torch</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.matrix import rotation</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.normal import cs_normal</span>
+<span class="sd">    &gt;&gt;&gt; from twiss.wolski import twiss</span>
+<span class="sd">    &gt;&gt;&gt; n = cs_normal(torch.tensor([0.1, 5.0, -0.1, 10.0]))</span>
+<span class="sd">    &gt;&gt;&gt; m = n @ rotation(*2*pi*torch.tensor([0.12, 0.21])) @ n.inverse()</span>
+<span class="sd">    &gt;&gt;&gt; *_, ws = twiss(m)</span>
+<span class="sd">    &gt;&gt;&gt; es = torch.tensor([1.0E-6, 1.0E-8])</span>
+<span class="sd">    &gt;&gt;&gt; ms = torch.zeros(4)</span>
+<span class="sd">    &gt;&gt;&gt; db = distribution(ms, es, ws)</span>
+<span class="sd">    &gt;&gt;&gt; ex, ey = es</span>
+<span class="sd">    &gt;&gt;&gt; wx, wy = ws</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(db.covariance_matrix, ex*wx + ey*wy)</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(db.sample((2**20, )).T.cov(), db.covariance_matrix)</span>
+<span class="sd">    True</span>
+<span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">z</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">z</span><span class="p">)</span> <span class="o">%</span> <span class="n">y</span><span class="p">)</span></div>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">wolski</span><span class="p">:</span>
+        <span class="n">emittance</span> <span class="o">=</span> <span class="n">emittance</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">covariance_matrix</span> <span class="o">=</span> <span class="p">(</span><span class="n">emittance</span><span class="o">*</span><span class="n">wolski</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">MultivariateNormal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">covariance_matrix</span><span class="p">)</span></div>
 
 </pre></div>
 
