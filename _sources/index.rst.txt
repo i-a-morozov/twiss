@@ -20,7 +20,7 @@ Coupled twiss parameters (Wolski twiss matrices) computation for arbitrary even 
    modules/convert.rst
    modules/invariant.rst
    modules/transport.rst
-   modules/beam.rst
+   modules/distribution.rst
 
 Indices and tables
 ==================

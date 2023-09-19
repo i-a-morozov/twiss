@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>twiss.beam &mdash; twiss  documentation</title>
+  <title>twiss.distribution &mdash; twiss  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -91,8 +91,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.momenta"><code class="docutils literal notranslate"><span class="pre">momenta()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.transport"><code class="docutils literal notranslate"><span class="pre">transport()</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/transport.html#twiss.transport.wolski_transport"><code class="docutils literal notranslate"><span class="pre">wolski_transport()</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/beam.html">Beam</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules/beam.html#twiss.beam.distribution"><code class="docutils literal notranslate"><span class="pre">distribution()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/distribution.html">Distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/distribution.html#twiss.distribution.normal"><code class="docutils literal notranslate"><span class="pre">normal()</span></code></a></li>
 </ul>
 
         </div>
@@ -110,7 +110,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">twiss.beam</li>
+      <li class="breadcrumb-item active">twiss.distribution</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -119,23 +119,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for twiss.beam</h1><div class="highlight"><pre>
+  <h1>Source code for twiss.distribution</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Beam</span>
-<span class="sd">----</span>
+<span class="sd">Distribution</span>
+<span class="sd">------------</span>
 
-<span class="sd">Matched beam utils</span>
+<span class="sd">Matched distribution utils</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
 <span class="kn">from</span> <span class="nn">torch.distributions.multivariate_normal</span> <span class="kn">import</span> <span class="n">MultivariateNormal</span>
 
-<div class="viewcode-block" id="distribution">
-<a class="viewcode-back" href="../../modules/beam.html#twiss.beam.distribution">[docs]</a>
-<span class="k">def</span> <span class="nf">distribution</span><span class="p">(</span><span class="n">mean</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
-                 <span class="n">emittance</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
-                 <span class="n">wolski</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MultivariateNormal</span><span class="p">:</span>
+<div class="viewcode-block" id="normal">
+<a class="viewcode-back" href="../../modules/distribution.html#twiss.distribution.normal">[docs]</a>
+<span class="k">def</span> <span class="nf">normal</span><span class="p">(</span><span class="n">mean</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+           <span class="n">emittance</span><span class="p">:</span><span class="n">Tensor</span><span class="p">,</span>
+           <span class="n">wolski</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">MultivariateNormal</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Create a multivariate normal distribution</span>
 
@@ -168,7 +168,7 @@
 <span class="sd">    &gt;&gt;&gt; *_, ws = twiss(m)</span>
 <span class="sd">    &gt;&gt;&gt; es = torch.tensor([1.0E-6, 1.0E-8])</span>
 <span class="sd">    &gt;&gt;&gt; ms = torch.zeros(4)</span>
-<span class="sd">    &gt;&gt;&gt; db = distribution(ms, es, ws)</span>
+<span class="sd">    &gt;&gt;&gt; db = normal(ms, es, ws)</span>
 <span class="sd">    &gt;&gt;&gt; ex, ey = es</span>
 <span class="sd">    &gt;&gt;&gt; wx, wy = ws</span>
 <span class="sd">    &gt;&gt;&gt; torch.allclose(db.covariance_matrix, ex*wx + ey*wy)</span>
