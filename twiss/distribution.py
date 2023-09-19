@@ -1,17 +1,17 @@
 """
-Beam
-----
+Distribution
+------------
 
-Matched beam utils
+Matched distribution utils
 
 """
 
 from torch import Tensor
 from torch.distributions.multivariate_normal import MultivariateNormal
 
-def distribution(mean:Tensor,
-                 emittance:Tensor,
-                 wolski:Tensor) -> MultivariateNormal:
+def normal(mean:Tensor,
+           emittance:Tensor,
+           wolski:Tensor) -> MultivariateNormal:
     """
     Create a multivariate normal distribution
 
@@ -44,7 +44,7 @@ def distribution(mean:Tensor,
     >>> *_, ws = twiss(m)
     >>> es = torch.tensor([1.0E-6, 1.0E-8])
     >>> ms = torch.zeros(4)
-    >>> db = distribution(ms, es, ws)
+    >>> db = normal(ms, es, ws)
     >>> ex, ey = es
     >>> wx, wy = ws
     >>> torch.allclose(db.covariance_matrix, ex*wx + ey*wy)
