@@ -14,6 +14,8 @@ $ pip install twiss -U
 
 # Documentation
 
+[![Run In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/i-a-morozov/twiss/blob/main/docs/source/examples/twiss.ipynb)
+
 [https://i-a-morozov.github.io/twiss/](https://i-a-morozov.github.io/twiss/)
 
 # Twiss
