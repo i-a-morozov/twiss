@@ -19,8 +19,8 @@ jobs:
       - uses: actions/setup-python@v3
       - name: Install
         run: |
-          pip install .
-          pip install mypy -U
+          pip install --upgrade pip
+          pip install .[test]
       - name: Check
         run: mypy $(git ls-files 'twiss/*.py')
 
@@ -33,10 +33,9 @@ jobs:
       - uses: actions/setup-python@v3
       - name: Install
         run: |
-          pip install .
-          pip install pylint -U
+          pip install .[test]
       - name: Check
-        run: pylint --disable=raw-checker-failed --disable=bad-inline-option --disable=locally-disabled --disable=file-ignored --disable=suppressed-message --disable=useless-suppression --disable=deprecated-pragma --disable=use-symbolic-message-instead --disable=function-redefined --disable=no-value-for-parameter --disable=no-member --disable=redefined-builtin --disable=unused-argument --disable=invalid-name --disable=too-many-locals --disable=redefined-outer-name $(git ls-files 'twiss/*.py')
+        run: pylint $(git ls-files 'twiss/*.py')
 
 
 

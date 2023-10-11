@@ -19,8 +19,8 @@ jobs:
       - uses: actions/setup-python@v3
       - name: Install
         run: |
-          pip install numpy
-          pip install .
+          pip install --upgrade pip
+          pip install .[test]
       - name: Test
         run: python -m doctest -v $(git ls-files 'twiss/*.py')
 
@@ -33,9 +33,8 @@ jobs:
       - uses: actions/setup-python@v3
       - name: Install
         run: |
-          pip install .
-          pip install pytest -U
-          pip install pytest-cov -U
+          pip install --upgrade pip
+          pip install .[test]
       - name: Test
         run: pytest --doctest-modules --cov
 
