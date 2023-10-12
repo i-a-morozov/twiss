@@ -34,7 +34,7 @@ version = {attr = "twiss.__version__"}
 test = ["mypy", "pylint", "pytest", "pytest-cov", "numpy"]
 docs = ["pandoc", "sphinx-rtd-theme", "ipykernel", "nbsphinx"]
 build = ["build", "setuptools", "twine"]
-examples = ["jupyterlab",  "matplotlib", "ndmap"]
+examples = ["jupyterlab",  "pandas", "matplotlib", "seaborn", "ndmap"]
 all = ["twiss[test, docs, build, examples]"]
 
 [tool.pylint.'MESSAGES CONTROL']
