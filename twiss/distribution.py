@@ -49,9 +49,9 @@ def normal(mean:Tensor,
     >>> wx, wy = ws
     >>> torch.allclose(db.covariance_matrix, ex*wx + ey*wy)
     True
-    >>> torch.allclose(db.sample((2**22, )).T.cov(), db.covariance_matrix)
+    >>> torch.allclose(db.sample((2**20, )).T.cov(), db.covariance_matrix)
     True
-    
+
     """
     for _ in wolski:
         emittance = emittance.unsqueeze(-1)
