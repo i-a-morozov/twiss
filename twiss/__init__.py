@@ -2,8 +2,38 @@
 Version and aliases
 
 """
-__version__ = '0.2.4'
+__version__ = '0.2.6'
 
+__all__ = [
+    'symplectify',
+    'is_symplectic',
+    'symplectic_conjugate',
+    'rotation',
+    'twiss',
+    'is_stable',
+    'propagate',
+    'advance',
+    'normal_to_wolski',
+    'wolski_to_normal',
+    'parametric',
+    'lb_normal',
+    'cs_normal',
+    'wolski_to_lb',
+    'lb_to_wolski',
+    'wolski_to_cs',
+    'cs_to_wolski',
+    'invariant',
+    'lb_invariant',
+    'cs_invariant',
+    'transport',
+    'wolski_transport',
+    'lb_transport',
+    'cs_transport',
+    'momenta',
+    'normal'
+]
+
+from twiss.matrix import symplectic_conjugate
 from twiss.matrix import symplectify
 from twiss.matrix import is_symplectic
 from twiss.matrix import rotation

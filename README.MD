@@ -1,4 +1,4 @@
-# twiss, 2022-2023
+# twiss, 2022-2024
 
 Coupled twiss parameters (Wolski twiss matrices) computation for arbitrary even dimension.
 

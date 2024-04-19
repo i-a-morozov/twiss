@@ -77,6 +77,32 @@ def symplectic_identity(d:int, *,
     return torch.block_diag(*[block for _ in range(d)])
 
 
+def symplectic_conjugate(m:Tensor) -> Tensor:
+    """
+    Compute symplectic conjugate of a given input matrix
+
+    Parameters
+    ----------
+    m: Tensor, even-dimension
+        input matrix
+
+    Returns
+    -------
+    Tensor
+
+    Examples
+    --------
+    >> import torch
+    >> symplectic_conjugate(torch.tensor([[1.0, 0.1], [0.0, 1.0]], dtype=torch.float64))
+    tensor([[ 1.0000, -0.1000],
+            [ 0.0000,  1.0000]], dtype=torch.float64)
+
+    """
+    d = len(m) // 2
+    s = symplectic_identity(d, dtype=m.dtype, device=m.device)
+    return - s @ m.T @ s
+
+
 def symplectify(m:Tensor) -> Tensor:
     """
     Perform symplectification of a given input matrix

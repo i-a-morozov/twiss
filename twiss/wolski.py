@@ -124,18 +124,18 @@ def twiss(m:Tensor, *,
         m_s = torch.block_diag(*[b_s for _ in range(d)])
         m_c = torch.block_diag(*[b_c for _ in range(d)])
 
-    l, v = torch.linalg.eig(m)
-    l, v = l.reshape(d, -1), v.T.reshape(d, -1, 2*d)
+    e, v = torch.linalg.eig(m)
+    e, v = e.reshape(d, -1), v.T.reshape(d, -1, 2*d)
 
     u = torch.zeros_like(v)
     for i, (v1, v2) in enumerate(v):
         u[i] = v[i]/(-1j*(v1 @ m_s.to(cdtype) @ v2)).abs().sqrt()
 
-    k = torch.zeros_like(l)
+    k = torch.zeros_like(e)
     v = torch.zeros_like(u)
     for i in range(d):
-        o = torch.clone(l[i].log()).imag.argsort()
-        k[i], v[i] = l[i, o], u[i, o]
+        o = torch.clone(e[i].log()).imag.argsort()
+        k[i], v[i] = e[i, o], u[i, o]
 
     t = 1.0 - k.log().abs().mean(-1)/(2.0*pi)
 
@@ -273,6 +273,6 @@ def advance(n:Tensor,
     """
     d = len(n) // 2
     i = torch.arange(d, dtype=torch.int64, device=n.device)
-    l = m @ n
-    f = mod(torch.arctan2(l[2*i, 2*i + 1], l[2*i, 2*i]), 2.0*pi)
-    return f, l @ rotation(*(-f))
+    k = m @ n
+    f = mod(torch.arctan2(k[2*i, 2*i + 1], k[2*i, 2*i]), 2.0*pi)
+    return f, k @ rotation(*(-f))
