@@ -175,7 +175,7 @@
 <span class="sd">    &gt;&gt;&gt; wx, wy = ws</span>
 <span class="sd">    &gt;&gt;&gt; torch.allclose(db.covariance_matrix, ex*wx + ey*wy)</span>
 <span class="sd">    True</span>
-<span class="sd">    &gt;&gt;&gt; torch.allclose(db.sample((2**20, )).T.cov(), db.covariance_matrix)</span>
+<span class="sd">    &gt;&gt;&gt; torch.allclose(db.sample((2**20, )).T.cov(), db.covariance_matrix, atol=1.0E-3, rtol=0.0)</span>
 <span class="sd">    True</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
