@@ -1,5 +1,9 @@
 # twiss, 2022-2024
 
+<p align="center">
+  <img width="150" height="95" src="https://github.com/i-a-morozov/twiss/blob/main/docs/pics/logo.svg">
+</p>
+
 Coupled twiss parameters (Wolski twiss matrices) computation for arbitrary even dimension.
 
 # Install & build
